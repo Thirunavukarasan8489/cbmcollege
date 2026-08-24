@@ -139,7 +139,7 @@ export default function Home() {
       {/* ANNOUNCEMENT TICKER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="bg-[#2C2B5E] text-white rounded-2xl p-5 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border-l-8 border-[#EC1C23]">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="bg-[#EC1C23] text-white px-3 py-1 rounded-md text-xs font-black uppercase tracking-wider shrink-0 flex items-center gap-1 shadow">
               <Calendar className="w-3.5 h-3.5" /> Latest Notice
             </span>

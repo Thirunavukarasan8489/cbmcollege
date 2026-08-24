@@ -183,7 +183,7 @@ export default function Footer() {
             © {new Date().getFullYear()} CBM College of Arts and Science. All
             Rights Reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
               className="hover:text-white transition-colors"
