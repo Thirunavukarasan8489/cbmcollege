@@ -15,12 +15,16 @@ interface PageSubmenuProps {
   children: React.ReactNode;
 }
 
-export default function PageSubmenu({ sectionTitle, items, children }: PageSubmenuProps) {
+export default function PageSubmenu({
+  sectionTitle,
+  items,
+  children,
+}: PageSubmenuProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Submenu Navigation Sidebar (Inspired by reference attachment) */}
-        <aside className="lg:col-span-3 space-y-2 sticky top-28 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+        <aside className="lg:col-span-3 space-y-2 lg:sticky lg:top-44 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="px-3 py-2 border-b border-slate-100 mb-2">
             <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#EC1C23]">
               {sectionTitle} Navigation
@@ -38,7 +42,9 @@ export default function PageSubmenu({ sectionTitle, items, children }: PageSubme
                 }`}
               >
                 <span>{item.label}</span>
-                <ChevronRight className={`w-4 h-4 transition-transform ${item.active ? "text-[#EC1C23] translate-x-1" : "opacity-40"}`} />
+                <ChevronRight
+                  className={`w-4 h-4 transition-transform ${item.active ? "text-[#EC1C23] translate-x-1" : "opacity-40"}`}
+                />
               </Link>
             ))}
           </nav>

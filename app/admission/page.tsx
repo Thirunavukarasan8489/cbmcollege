@@ -151,7 +151,7 @@ export default function AdmissionPage() {
           </div>
 
           {/* Right Column: Digital Application Form */}
-          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl space-y-6 self-start sticky top-24">
+          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl space-y-6 self-start lg:sticky lg:top-24">
             <div className="space-y-2">
               <span className="text-xs font-bold text-amber-600 uppercase tracking-widest flex items-center gap-1">
                 <FileCheck className="w-4 h-4" /> Direct Portal
