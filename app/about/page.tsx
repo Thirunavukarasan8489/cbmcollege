@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageSubmenu from "../components/PageSubmenu";
-import { GraduationCap, Award, BookOpen, ShieldCheck, HeartHandshake, ArrowRight, UserCheck } from "lucide-react";
+import { GraduationCap, Award, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us & History",
@@ -17,15 +17,24 @@ export default function AboutPage() {
 
   return (
     <div className="space-y-8 pb-12">
-      {/* PAGE HEADER */}
-      <section className="bg-gradient-to-r from-slate-950 via-[#2C2B5E] to-[#EC1C23] text-white py-12 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto space-y-3">
+      {/* PAGE HEADER WITH BACKGROUND CAMPUS IMAGE */}
+      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{ backgroundImage: "url('/hero_1.jpg')" }}
+        />
+        {/* Brand Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
             <Link href="/" className="hover:underline">Home</Link>
             <span>/</span>
             <span>About Us</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold  tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
             Our Legacy & Heritage
           </h1>
           <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
@@ -43,7 +52,7 @@ export default function AboutPage() {
               <GraduationCap className="w-4 h-4" />
               <span>Founding History</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold  text-[#2C2B5E] leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#2C2B5E] leading-tight">
               A Temple of Learning in Coimbatore
             </h2>
             <div className="text-slate-600 text-xs sm:text-sm leading-relaxed space-y-3 font-normal">
@@ -57,11 +66,11 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span className="text-xl font-bold text-[#EC1C23] ">October 1970</span>
+                <span className="text-xl font-bold text-[#EC1C23]">October 1970</span>
                 <p className="text-xs text-slate-500 font-medium mt-0.5">Trust Established</p>
               </div>
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
-                <span className="text-xl font-bold text-[#2C2B5E] ">1 July 1974</span>
+                <span className="text-xl font-bold text-[#2C2B5E]">1 July 1974</span>
                 <p className="text-xs text-slate-500 font-medium mt-0.5">College Inaugurated</p>
               </div>
             </div>
@@ -71,13 +80,13 @@ export default function AboutPage() {
 
           {/* Mission & Vision */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold  text-[#2C2B5E]">Mission & Vision</h3>
+            <h3 className="text-xl font-bold text-[#2C2B5E]">Mission & Vision</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                 <div className="w-9 h-9 rounded-xl bg-rose-100 text-[#EC1C23] flex items-center justify-center font-bold">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <h4 className="text-base font-bold  text-[#2C2B5E]">Our Mission</h4>
+                <h4 className="text-base font-bold text-[#2C2B5E]">Our Mission</h4>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Inculcating academic training alongside authentic cultural mores, fulfilling global demands through sustained educational policies.
                 </p>
@@ -87,7 +96,7 @@ export default function AboutPage() {
                 <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
                   <Award className="w-5 h-5" />
                 </div>
-                <h4 className="text-base font-bold  text-[#2C2B5E]">Our Vision</h4>
+                <h4 className="text-base font-bold text-[#2C2B5E]">Our Vision</h4>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Enriching the academic atmosphere through exemplary seminars, guest lectures, modern managerial inputs, and learner-friendly environment.
                 </p>
@@ -99,7 +108,7 @@ export default function AboutPage() {
 
           {/* 5 Objectives of Trust */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold  text-[#2C2B5E]">Five Core Objectives of the Trust</h3>
+            <h3 className="text-xl font-bold text-[#2C2B5E]">Five Core Objectives of the Trust</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {[
                 { num: "01", title: "Societal Elevation", desc: "Establishing educational institutions to elevate the society." },
@@ -109,7 +118,7 @@ export default function AboutPage() {
                 { num: "05", title: "Language Mastery", desc: "Encouraging students to achieve mastery over languages." },
               ].map((obj) => (
                 <div key={obj.num} className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-1">
-                  <span className="text-lg font-extrabold text-[#EC1C23] ">{obj.num}</span>
+                  <span className="text-lg font-extrabold text-[#EC1C23]">{obj.num}</span>
                   <h4 className="text-xs font-bold text-[#2C2B5E]">{obj.title}</h4>
                   <p className="text-slate-600 text-[11px] leading-relaxed">{obj.desc}</p>
                 </div>

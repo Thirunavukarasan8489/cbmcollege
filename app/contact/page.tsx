@@ -52,9 +52,18 @@ export default function ContactPage() {
     <div className="space-y-16 pb-12">
       <JsonLd data={contactSchema} />
 
-      {/* BANNER */}
-      <section className="bg-gradient-to-r from-slate-950 via-[#5a1620] to-[#7a1f2b] text-white py-16 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto space-y-4">
+      {/* BANNER WITH BACKGROUND CAMPUS IMAGE */}
+      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{ backgroundImage: "url('/hero_3.jpg')" }}
+        />
+        {/* Brand Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
             <Link href="/" className="hover:underline">
               Home
@@ -62,10 +71,10 @@ export default function ContactPage() {
             <span>/</span>
             <span>Contact Us</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold  tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             Campus Contact & Location
           </h1>
-          <p className="text-slate-300 max-w-2xl text-base sm:text-lg">
+          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
             Reach out to CBM College of Arts and Science in Sakethapuri,
             Kovaipudur, Coimbatore.
           </p>

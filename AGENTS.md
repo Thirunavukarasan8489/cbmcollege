@@ -277,8 +277,9 @@ Since this is Next.js (App Router assumed), implement per-page and global:
 ## Redesign Execution & Completed Features Log (August 2026 Pass)
 
 ### 1. Visual Design & Theme System
-- **Palette**: Applied academic royal maroon (`#7A1F2B`), deep crimson (`#5A1620`), and rich gold (`#D4AF37`) palette.
+- **Palette**: Applied academic primary red (`#EC1C23`), royal navy (`#2C2B5E`), charcoal body (`#252525`), and academic gold (`#D4AF37`) palette.
 - **Glassmorphic UI**: Implemented frosted glass navigation header, card overlays, custom scrollbar, and micro-interactions.
+- **Inner Page Background Headers**: Enhanced header sections across all inner pages (`/about`, `/courses`, `/facilities`, `/gallery`, `/women-empowerment`, `/mba-department`, `/staff`, `/admission`, `/contact`) with high-resolution campus background images (`/hero_1.jpg`, `/hero_2.jpg`, `/hero_3.jpg`) layered under rich dark brand gradient overlays (`from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80`).
 - **Iconography & Animation**: Replaced decorative Sparkles icons with contextually relevant academic icons (`GraduationCap`, `Award`, `FileCheck`, `BookOpen`, `ShieldCheck`), smooth tab switching, filterable course & gallery grids, and modal popups.
 
 ### 2. Page Hierarchy Delivered
