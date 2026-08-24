@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import PageSubmenu from "../components/PageSubmenu";
 import { BookOpen, Search, Clock, GraduationCap, CheckCircle2, ChevronRight, X } from "lucide-react";
 import JsonLd from "../components/JsonLd";
 
@@ -10,8 +11,12 @@ export default function CoursesPage() {
   const [category, setCategory] = useState<"all" | "ug" | "pg" | "research">("all");
   const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
 
+  const coursesSubmenuItems = [
+    { label: "All Degree Programs", href: "/courses", active: true },
+    { label: "MBA Department", href: "/mba-department" },
+  ];
+
   const coursesList = [
-    // Undergraduate
     {
       id: "b-com",
       category: "ug",
@@ -63,7 +68,7 @@ export default function CoursesPage() {
       highlights: ["Quantum Mechanics", "Digital Electronics", "Optics & Acoustics", "Solid State Physics"]
     },
     {
-      id: "bsc-[#7a1f2b]viscom",
+      id: "bsc-viscom",
       category: "ug",
       title: "B.Sc. Visual Communication",
       dept: "Department of Visual Communication",
@@ -72,7 +77,6 @@ export default function CoursesPage() {
       desc: "Covers media ethics, photography, graphic designing, television production, video editing, and digital advertising.",
       highlights: ["Digital Graphic Design", "Audio/Video Editing", "Media Aesthetics & Writing", "Film Studies & Animation"]
     },
-    // Postgraduate
     {
       id: "mba-dept",
       category: "pg",
@@ -123,7 +127,6 @@ export default function CoursesPage() {
       desc: "Advanced studies in organic synthesis, physical chemistry, spectroscopy, analytical methods, and laboratory research.",
       highlights: ["Organic Synthesis", "Molecular Spectroscopy", "Electrochemistry", "Research Project"]
     },
-    // Research
     {
       id: "mphil",
       category: "research",
@@ -155,106 +158,107 @@ export default function CoursesPage() {
   }));
 
   return (
-    <div className="space-y-12 py-12">
+    <div className="space-y-8 pb-12">
       <JsonLd data={courseSchemas} />
 
-      {/* HEADER */}
-      <section className="bg-gradient-to-r from-slate-950 via-[#5a1620] to-[#7a1f2b] text-white py-16 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto space-y-4">
+      {/* HEADER BANNER */}
+      <section className="bg-gradient-to-r from-slate-950 via-[#2C2B5E] to-[#EC1C23] text-white py-12 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto space-y-3">
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
             <Link href="/" className="hover:underline">Home</Link>
             <span>/</span>
             <span>Courses</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight">
             Academic Programs & Degrees
           </h1>
-          <p className="text-slate-300 max-w-2xl text-base sm:text-lg">
+          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
             Undergraduate, Postgraduate, MBA, and Research degrees affiliated to Bharathiar University, Coimbatore.
           </p>
         </div>
       </section>
 
-      {/* SEARCH AND FILTERS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          {/* Search Box */}
-          <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search course or department..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#7a1f2b]"
-            />
+      {/* PAGE SUBMENU & CATALOG CONTENT */}
+      <PageSubmenu sectionTitle="Courses" items={coursesSubmenuItems}>
+        <div className="space-y-6">
+          {/* Search and Category Filters */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div className="relative w-full md:w-72">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search program or department..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 text-xs bg-white rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#EC1C23]"
+              />
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
+              {[
+                { id: "all", label: "All Degrees" },
+                { id: "ug", label: "UG" },
+                { id: "pg", label: "PG" },
+                { id: "research", label: "Research" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setCategory(tab.id as any)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    category === tab.id
+                      ? "bg-[#EC1C23] text-white shadow"
+                      : "bg-white text-slate-600 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 w-full md:w-auto">
-            {[
-              { id: "all", label: "All Programs" },
-              { id: "ug", label: "Undergraduate (UG)" },
-              { id: "pg", label: "Postgraduate (PG)" },
-              { id: "research", label: "Research" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setCategory(tab.id as any)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  category === tab.id
-                    ? "bg-[#7a1f2b] text-white shadow"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                }`}
+          {/* COURSES CATALOG GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filtered.map((course) => (
+              <div
+                key={course.id}
+                className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
               >
-                {tab.label}
-              </button>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="bg-rose-50 text-[#EC1C23] text-[10px] font-bold px-2 py-0.5 rounded border border-rose-100 uppercase tracking-wider">
+                      {course.category === "ug" ? "UG Degree" : course.category === "pg" ? "PG Degree" : "Research"}
+                    </span>
+                    <span className="flex items-center gap-1 text-[11px] text-slate-500">
+                      <Clock className="w-3.5 h-3.5 text-amber-500" />
+                      <span>{course.duration}</span>
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold font-serif text-[#2C2B5E] leading-snug">{course.title}</h3>
+                  <p className="text-[11px] font-bold text-[#EC1C23]">{course.dept}</p>
+                  <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">{course.desc}</p>
+                </div>
+
+                <div className="pt-4 mt-3 border-t border-slate-100 flex items-center justify-between">
+                  <button
+                    onClick={() => setSelectedCourse(course)}
+                    className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Syllabus & Eligibility</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                  <Link
+                    href="/admission"
+                    className="bg-[#2C2B5E] text-white hover:bg-[#EC1C23] text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    Apply
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* COURSES CATALOG GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((course) => (
-            <div
-              key={course.id}
-              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="bg-rose-50 text-[#7a1f2b] text-[11px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider border border-rose-100">
-                    {course.category === "ug" ? "UG Degree" : course.category === "pg" ? "PG Degree" : "Research"}
-                  </span>
-                  <span className="flex items-center gap-1 text-xs text-slate-500">
-                    <Clock className="w-3.5 h-3.5 text-amber-500" />
-                    <span>{course.duration}</span>
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold font-serif text-slate-900 leading-snug">{course.title}</h3>
-                <p className="text-xs font-semibold text-amber-700">{course.dept}</p>
-                <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">{course.desc}</p>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
-                <button
-                  onClick={() => setSelectedCourse(course)}
-                  className="text-xs font-bold text-[#7a1f2b] hover:text-[#5a1620] inline-flex items-center gap-1"
-                >
-                  <span>Syllabus & Eligibility</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-                <Link
-                  href="/admission"
-                  className="bg-slate-900 text-white hover:bg-[#7a1f2b] text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
-                >
-                  Apply
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      </PageSubmenu>
 
       {/* DETAIL MODAL */}
       {selectedCourse && (
@@ -268,26 +272,26 @@ export default function CoursesPage() {
             </button>
 
             <div className="space-y-2">
-              <span className="bg-rose-50 text-[#7a1f2b] text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">
+              <span className="bg-rose-50 text-[#EC1C23] text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">
                 {selectedCourse.dept}
               </span>
-              <h2 className="text-2xl font-bold font-serif text-slate-900">{selectedCourse.title}</h2>
+              <h2 className="text-2xl font-bold font-serif text-[#2C2B5E]">{selectedCourse.title}</h2>
               <p className="text-xs text-slate-500 font-medium">Duration: {selectedCourse.duration} • Bharathiar University</p>
             </div>
 
             <div className="space-y-4 text-sm text-slate-600">
               <div>
-                <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">Eligibility Criteria</h4>
+                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-1">Eligibility Criteria</h4>
                 <p className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs leading-relaxed">{selectedCourse.eligibility}</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Program Description</h4>
+                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-2">Program Description</h4>
                 <p className="text-xs leading-relaxed">{selectedCourse.desc}</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Key Subjects & Focus Areas</h4>
+                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-2">Key Focus Areas</h4>
                 <div className="grid grid-cols-2 gap-2">
                   {selectedCourse.highlights.map((h: string) => (
                     <div key={h} className="flex items-center gap-1.5 text-xs text-slate-700 font-medium">
@@ -304,11 +308,11 @@ export default function CoursesPage() {
                 onClick={() => setSelectedCourse(null)}
                 className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100"
               >
-                Close Window
+                Close
               </button>
               <Link
                 href="/admission"
-                className="bg-gradient-to-r from-[#7a1f2b] to-[#9e2a3b] text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow hover:from-[#5a1620] transition-all"
+                className="bg-[#EC1C23] text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow hover:bg-[#c41218] transition-all"
               >
                 Proceed to Online Admission
               </Link>

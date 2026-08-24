@@ -16,7 +16,8 @@ Color palette and fonts updated per manual brand specification:
 ```
 - **Typography**: `Plus_Jakarta_Sans` for crisp body text and `Playfair_Display` for authoritative academic headers.
 - **Logo Asset**: Integrated official college emblem [`public/logo.png`](file:///d:/projects/cbmcollege/public/logo.png) in header navigation and footer.
-- **Hero Carousel**: Multi-slide auto-playing image slider with pause-on-hover, interactive slide controls, and responsive caption overlays ([`app/components/HeroCarousel.tsx`](file:///d:/projects/cbmcollege/app/components/HeroCarousel.tsx)).
+- **Header Navigation Dropdowns**: Structured Navbar with dropdown submenus for **Courses** (All Degrees & MBA Department) and **Campus Life** (Facilities, Gallery & Women Cell).
+- **Vertical Pill Submenu Sidebar**: Built reusable [`PageSubmenu.tsx`](file:///d:/projects/cbmcollege/app/components/PageSubmenu.tsx) component matching the user-provided reference design, featuring vertical sub-item navigation tabs with active dark background states (`#2C2B5E`) and right-side content panels.
 
 ---
 
