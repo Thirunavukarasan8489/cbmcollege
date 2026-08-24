@@ -169,7 +169,7 @@ export default function CoursesPage() {
             <span>/</span>
             <span>Courses</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold  tracking-tight">
             Academic Programs & Degrees
           </h1>
           <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
@@ -234,7 +234,7 @@ export default function CoursesPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold font-serif text-[#2C2B5E] leading-snug">{course.title}</h3>
+                  <h3 className="text-base font-bold  text-[#2C2B5E] leading-snug">{course.title}</h3>
                   <p className="text-[11px] font-bold text-[#EC1C23]">{course.dept}</p>
                   <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">{course.desc}</p>
                 </div>
@@ -275,7 +275,7 @@ export default function CoursesPage() {
               <span className="bg-rose-50 text-[#EC1C23] text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">
                 {selectedCourse.dept}
               </span>
-              <h2 className="text-2xl font-bold font-serif text-[#2C2B5E]">{selectedCourse.title}</h2>
+              <h2 className="text-2xl font-bold  text-[#2C2B5E]">{selectedCourse.title}</h2>
               <p className="text-xs text-slate-500 font-medium">Duration: {selectedCourse.duration} • Bharathiar University</p>
             </div>
 

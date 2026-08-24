@@ -22,8 +22,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-[#ec1c23]: #EC1C23;
-  --color-[#2c2b5e]: #2C2B5E;
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
+  --color-text-main: var(--text-main);
+  --color-[#d4af37]: var(--accent-gold);
+  --color-[#ec1c23]: var(--primary);
+  --color-[#2c2b5e]: var(--secondary);
 }
 
 @layer base {
@@ -39,7 +47,7 @@
   }
 
   h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-heading), Georgia, serif;
+    font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
   }
 }
 

@@ -1,6 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Globe, ArrowRight, ShieldCheck, Award, ExternalLink } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Globe,
+  ArrowRight,
+  ShieldCheck,
+  Award,
+  ExternalLink,
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,7 +22,7 @@ export default function Footer() {
           {/* Col 1: Institutional Profile & Logo */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow">
+              {/* <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow">
                 <Image
                   src="/logo.png"
                   alt="CBM College Emblem Logo"
@@ -21,14 +30,23 @@ export default function Footer() {
                   height={44}
                   className="object-contain"
                 />
-              </div>
+              </div> */}
               <div>
-                <h3 className="text-xl font-bold text-white font-serif tracking-tight">CBM COLLEGE</h3>
-                <p className="text-xs text-[#EC1C23] font-extrabold tracking-wider uppercase">Arts & Science • Est. 1974</p>
+                <h3 className="text-tiny font-bold text-primary tracking-tight">
+                  C.B.M College of Arts and Science
+                </h3>
+                <p className="text-sm text-white tracking-wider ">
+                  (Affiliated in Bharathiar University)
+                </p>
+                <p className="text-sm text-white font-extrabold tracking-wider">
+                  Sakethapuri, Kovaipudur Coimbatore - 641 042
+                </p>
               </div>
             </div>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Sponsored by CBM Sakunthala Memorial Trust (Estd. Oct 1970 by Late C. B. Muthuswamy Chettiar). Providing holistic, value-based higher education in Coimbatore.
+              Sponsored by CBM Sakunthala Memorial Trust (Estd. Oct 1970 by Late
+              C. B. Muthuswamy Chettiar). Providing holistic, value-based higher
+              education in Coimbatore.
             </p>
             <div className="pt-2 flex flex-wrap gap-2 text-xs">
               <div className="flex items-center gap-1 bg-white/10 border border-white/20 px-2.5 py-1 rounded text-slate-200">
@@ -51,8 +69,14 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 { name: "About Institution & Founder", href: "/about" },
-                { name: "Undergraduate & Postgraduate Degrees", href: "/courses" },
-                { name: "Department of Management (MBA)", href: "/mba-department" },
+                {
+                  name: "Undergraduate & Postgraduate Degrees",
+                  href: "/courses",
+                },
+                {
+                  name: "Department of Management (MBA)",
+                  href: "/mba-department",
+                },
                 { name: "Admissions & Procedure", href: "/admission" },
                 { name: "Campus Facilities & Hostel", href: "/facilities" },
                 { name: "Women Empowerment Cell", href: "/women-empowerment" },
@@ -86,7 +110,9 @@ export default function Footer() {
               <li>• B.Sc. Visual Communication</li>
               <li>• M.A. Economics & M.Com</li>
               <li>• M.Sc. Mathematics & Chemistry</li>
-              <li className="text-amber-300 font-bold pt-1">• Master of Business Administration (MBA)</li>
+              <li className="text-amber-300 font-bold pt-1">
+                • Master of Business Administration (MBA)
+              </li>
             </ul>
           </div>
 
@@ -99,26 +125,53 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-300">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-5 h-5 text-[#EC1C23] shrink-0 mt-0.5" />
-                <span>Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India – 641042</span>
+                <span>
+                  Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India –
+                  641042
+                </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#EC1C23] shrink-0" />
                 <div>
-                  <a href="tel:04222607259" className="hover:text-amber-300">0422-2607259</a>
+                  <a href="tel:04222607259" className="hover:text-amber-300">
+                    0422-2607259
+                  </a>
                   <span className="mx-1">•</span>
-                  <a href="tel:9976573040" className="hover:text-amber-300 font-bold text-amber-300">9976573040</a>
+                  <a
+                    href="tel:+919976573040"
+                    className="hover:text-amber-300 font-bold text-amber-300"
+                  >
+                    +91 9976573040
+                  </a>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#EC1C23] shrink-0" />
                 <div className="flex flex-col">
-                  <a href="mailto:cbmcollegekovai@gmail.com" className="hover:text-amber-300">cbmcollegekovai@gmail.com</a>
-                  <a href="mailto:mba@cbmcollege.com" className="hover:text-amber-300">mba@cbmcollege.com</a>
+                  <a
+                    href="mailto:cbmcollegekovai@gmail.com"
+                    className="hover:text-amber-300"
+                  >
+                    cbmcollegekovai@gmail.com
+                  </a>
+                  <a
+                    href="mailto:mba@cbmcollege.com"
+                    className="hover:text-amber-300"
+                  >
+                    mba@cbmcollege.com
+                  </a>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Globe className="w-4 h-4 text-[#EC1C23] shrink-0" />
-                <a href="https://www.cbmcollege.com" target="_blank" rel="noreferrer" className="hover:text-amber-300">www.cbmcollege.com</a>
+                <a
+                  href="https://www.cbmcollege.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-amber-300"
+                >
+                  www.cbmcollege.com
+                </a>
               </li>
             </ul>
           </div>
@@ -126,11 +179,24 @@ export default function Footer() {
 
         {/* Bottom Copyright & AI Link */}
         <div className="pt-8 border-t border-slate-700/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} CBM College of Arts and Science. All Rights Reserved.</p>
+          <p>
+            © {new Date().getFullYear()} CBM College of Arts and Science. All
+            Rights Reserved.
+          </p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="hover:text-white transition-colors">Location Map</Link>
+            <Link
+              href="/contact"
+              className="hover:text-white transition-colors"
+            >
+              Location Map
+            </Link>
             <span>•</span>
-            <Link href="/admission" className="hover:text-white transition-colors">Admissions 2026</Link>
+            <Link
+              href="/admission"
+              className="hover:text-white transition-colors"
+            >
+              Admissions 2026
+            </Link>
             <span>•</span>
             <a
               href="/llms.txt"

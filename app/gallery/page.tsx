@@ -12,7 +12,6 @@ export default function GalleryPage() {
   const campusSubmenuItems = [
     { label: "Facilities & Infrastructure", href: "/facilities" },
     { label: "Photo & Video Gallery", href: "/gallery", active: true },
-    { label: "Women Empowerment Cell", href: "/women-empowerment" },
   ];
 
   const galleryItems = [
@@ -41,7 +40,7 @@ export default function GalleryPage() {
             <span>/</span>
             <span>Gallery</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold  tracking-tight">
             Photo & Video Gallery
           </h1>
           <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
@@ -97,7 +96,7 @@ export default function GalleryPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="text-base font-bold font-serif leading-snug">{item.title}</h3>
+                    <h3 className="text-base font-bold  leading-snug">{item.title}</h3>
                     <p className="text-[11px] text-slate-200 line-clamp-2">{item.desc}</p>
                   </div>
                 </div>
@@ -122,7 +121,7 @@ export default function GalleryPage() {
               <span className="bg-white/20 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-md uppercase w-fit mb-2">
                 {lightboxImage.tag}
               </span>
-              <h2 className="text-xl font-bold font-serif">{lightboxImage.title}</h2>
+              <h2 className="text-xl font-bold ">{lightboxImage.title}</h2>
             </div>
 
             <div className="space-y-1">

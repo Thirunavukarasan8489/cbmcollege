@@ -37,7 +37,7 @@ export default function StaffPage() {
             <span>/</span>
             <span>Staff Directory</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold  tracking-tight">
             Faculty & Staff Directory
           </h1>
           <p className="text-slate-300 max-w-2xl text-base sm:text-lg">
@@ -81,7 +81,7 @@ export default function StaffPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((staff) => (
             <div key={staff.name} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#7a1f2b] to-[#5a1620] text-amber-300 font-bold flex items-center justify-center font-serif shrink-0 text-base shadow">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#7a1f2b] to-[#5a1620] text-amber-300 font-bold flex items-center justify-center  shrink-0 text-base shadow">
                 {staff.name.split(" ").slice(-1)[0][0]}
               </div>
               <div className="space-y-1 text-slate-700">

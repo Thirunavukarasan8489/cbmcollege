@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function WomenEmpowermentPage() {
-  const campusSubmenuItems = [
-    { label: "Facilities & Infrastructure", href: "/facilities" },
-    { label: "Photo & Video Gallery", href: "/gallery" },
+  const aboutSubmenuItems = [
+    { label: "About College & Founder", href: "/about" },
     { label: "Women Empowerment Cell", href: "/women-empowerment", active: true },
   ];
 
@@ -34,11 +33,11 @@ export default function WomenEmpowermentPage() {
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
             <Link href="/" className="hover:underline">Home</Link>
             <span>/</span>
-            <span>Campus Life</span>
+            <span>About Us</span>
             <span>/</span>
             <span>Women Empowerment Cell</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold  tracking-tight">
             Women Empowerment Cell
           </h1>
           <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
@@ -48,7 +47,7 @@ export default function WomenEmpowermentPage() {
       </section>
 
       {/* PAGE SUBMENU & CELL CONTENT */}
-      <PageSubmenu sectionTitle="Campus Life" items={campusSubmenuItems}>
+      <PageSubmenu sectionTitle="About Us" items={aboutSubmenuItems}>
         <div className="space-y-10">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -56,7 +55,7 @@ export default function WomenEmpowermentPage() {
                 <Heart className="w-5 h-5" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold font-serif text-[#2C2B5E]">Nurturing Confident Female Leaders</h2>
+                <h2 className="text-2xl font-bold  text-[#2C2B5E]">Nurturing Confident Female Leaders</h2>
                 <p className="text-xs text-[#EC1C23] font-bold uppercase tracking-wider">Cell Mission</p>
               </div>
             </div>
@@ -69,7 +68,7 @@ export default function WomenEmpowermentPage() {
 
           {/* 7 Core Objectives */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold font-serif text-[#2C2B5E]">7 Core Cell Objectives</h3>
+            <h3 className="text-lg font-bold  text-[#2C2B5E]">7 Core Cell Objectives</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {objectives.map((obj, i) => (
                 <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2 flex items-start gap-3">
@@ -86,7 +85,7 @@ export default function WomenEmpowermentPage() {
 
           {/* Key Events */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold font-serif text-[#2C2B5E]">Key Events & Initiatives</h3>
+            <h3 className="text-lg font-bold  text-[#2C2B5E]">Key Events & Initiatives</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
                 <span className="text-xs font-bold text-[#EC1C23]">Annual Flagship</span>

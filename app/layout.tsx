@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CollegeSchema } from "./components/JsonLd";
 
-const sansFont = Plus_Jakarta_Sans({
+const sansFont = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const headingFont = Playfair_Display({
+const headingFont = Outfit({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {

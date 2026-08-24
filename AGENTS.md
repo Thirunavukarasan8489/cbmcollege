@@ -14,9 +14,9 @@ Color palette and fonts updated per manual brand specification:
 --color-text-main: #252525;    /* Body Dark Charcoal */
 --color-[#d4af37]: #D4AF37;   /* Academic Gold Accent */
 ```
-- **Typography**: `Plus_Jakarta_Sans` for crisp body text and `Playfair_Display` for authoritative academic headers.
+- **Typography**: `Inter` for clean, highly legible body text and `Outfit` for modern, authoritative headings.
 - **Logo Asset**: Integrated official college emblem [`public/logo.png`](file:///d:/projects/cbmcollege/public/logo.png) in header navigation and footer.
-- **Header Navigation Dropdowns**: Structured Navbar with dropdown submenus for **Courses** (All Degrees & MBA Department) and **Campus Life** (Facilities, Gallery & Women Cell).
+- **Header Navigation Dropdowns & Mobile Slide Drawer**: Structured Navbar with dropdown submenus for **About**, **Courses**, and **Campus Life**, featuring a smooth off-canvas right-side slide panel (`translate-x-0` / `translate-x-full`) with blurred backdrop overlay and automatic background body scroll locking (`document.body.style.overflow = "hidden"`).
 - **Vertical Pill Submenu Sidebar**: Built reusable [`PageSubmenu.tsx`](file:///d:/projects/cbmcollege/app/components/PageSubmenu.tsx) component matching the user-provided reference design, featuring vertical sub-item navigation tabs with active dark background states (`#2C2B5E`) and right-side content panels.
 
 ---
@@ -31,7 +31,7 @@ Color palette and fonts updated per manual brand specification:
 - Principal: Dr. K. Kumarasamy
 - Address: CBM College of Arts & Science, Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India – 641042
 - Phone: 0422-2607259
-- Admission Contact: 9976573040
+- Admission Contact: +919976573040
 - Email: mba@cbmcollege.com, cbmcollegekovai@gmail.com (also seen: enquiry@cbmcolege.com — verify correct spelling before using)
 - Website (current): https://www.cbmcollege.com/
 - Geo coordinates: 10.9394°N, 76.9373°E (Sakethpuri, Kovaipudur, Coimbatore)
@@ -238,7 +238,7 @@ Computer Labs · Sports Grounds / Indoor Stadium · Medical facilities · Cafete
 **Scraped content:**
 > CBM College of Arts & Science, Sakethapuri, Kovaipudur, Coimbatore, Tamilnadu, India – 641042.
 > Phone: 0422-2607259
-> For Admission Contact: 9976573040
+> For Admission Contact: +919976573040
 > Email: mba@cbmcollege.com, cbmcollegekovai@gmail.com
 > Website: www.cbmcollege.com
 
@@ -291,7 +291,7 @@ Since this is Next.js (App Router assumed), implement per-page and global:
 7. **Women Empowerment Cell (`/women-empowerment`)**: Cell mission, 7 core objectives, legal safety guidance, entrepreneurship workshops, and annual event celebrations.
 8. **Staff Directory (`/staff`)**: Searchable faculty index by department with qualifications and provisional status note.
 9. **Gallery (`/gallery`)**: Category-filtered photo grid (Campus, Events, 25th Silver Jubilee, Sports) with interactive Lightbox preview modal.
-10. **Contact Us (`/contact`)**: Sakethapuri campus location info, direct click-to-call (`0422-2607259`, `9976573040`), interactive Google Maps embed, enquiry form, and `ContactPoint` JSON-LD schema.
+10. **Contact Us (`/contact`)**: Sakethapuri campus location info, direct click-to-call (`0422-2607259`, `+919976573040`), interactive Google Maps embed, enquiry form, and `ContactPoint` JSON-LD schema.
 
 ### 3. SEO & GEO Files Created
 - `app/sitemap.ts`: Dynamic Next.js sitemap generator.

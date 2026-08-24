@@ -94,7 +94,7 @@ export default function HeroCarousel() {
                 </div>
 
                 {/* Title */}
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-serif leading-[1.15] text-white drop-shadow-md">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-sans leading-[1.15] text-white drop-shadow-md">
                   {slide.title}
                 </h1>
 

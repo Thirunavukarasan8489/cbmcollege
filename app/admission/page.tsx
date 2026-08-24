@@ -55,7 +55,7 @@ export default function AdmissionPage() {
   };
 
   return (
-    <div className="space-y-16 py-12">
+    <div className="space-y-16 pb-12">
       <JsonLd data={faqSchema} />
 
       {/* BANNER */}
@@ -66,7 +66,7 @@ export default function AdmissionPage() {
             <span>/</span>
             <span>Admissions</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-serif tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold  tracking-tight">
             Admissions 2026-2027
           </h1>
           <p className="text-slate-300 max-w-2xl text-base sm:text-lg">
@@ -84,7 +84,7 @@ export default function AdmissionPage() {
               <span className="text-xs font-bold tracking-widest text-[#7a1f2b] uppercase bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
                 Application Workflow
               </span>
-              <h2 className="text-3xl font-bold font-serif text-slate-900">How to Apply</h2>
+              <h2 className="text-3xl font-bold  text-slate-900">How to Apply</h2>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Admissions normally begin in May and classes commence mid-July. Selections are made following interview and merit rank verification.
               </p>
@@ -99,7 +99,7 @@ export default function AdmissionPage() {
                 { step: "04", title: "Provisional Admission & Fee Payment", desc: "Selected candidates file original certificates and remit term fees to finalize provisional admission." },
               ].map((s) => (
                 <div key={s.step} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
-                  <span className="w-10 h-10 rounded-xl bg-rose-100 text-[#7a1f2b] font-black font-serif flex items-center justify-center shrink-0 text-sm">
+                  <span className="w-10 h-10 rounded-xl bg-rose-100 text-[#7a1f2b] font-black  flex items-center justify-center shrink-0 text-sm">
                     {s.step}
                   </span>
                   <div>
@@ -112,7 +112,7 @@ export default function AdmissionPage() {
 
             {/* Document Checklist */}
             <div className="bg-slate-900 text-slate-200 p-6 rounded-2xl space-y-4">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2 font-serif">
+              <h3 className="text-lg font-bold text-white flex items-center gap-2 ">
                 <FileText className="w-5 h-5 text-amber-400" />
                 Required Documents Checklist
               </h3>
@@ -147,7 +147,7 @@ export default function AdmissionPage() {
               <span className="text-xs font-bold text-amber-600 uppercase tracking-widest flex items-center gap-1">
                 <FileCheck className="w-4 h-4" /> Direct Portal
               </span>
-              <h3 className="text-2xl font-bold font-serif text-slate-900">Online Admission Enquiry 2026</h3>
+              <h3 className="text-2xl font-bold  text-slate-900">Online Admission Enquiry 2026</h3>
               <p className="text-xs text-slate-500">Fill out your details to receive instant prospectus info and callback from our Admission Desk.</p>
             </div>
 
@@ -248,7 +248,7 @@ export default function AdmissionPage() {
       {/* ADMISSION FAQS */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
         <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold font-serif text-slate-900">Admission FAQ</h2>
+          <h2 className="text-3xl font-bold  text-slate-900">Admission FAQ</h2>
           <p className="text-xs text-slate-500">Official procedures and guidelines for prospective students.</p>
         </div>
 

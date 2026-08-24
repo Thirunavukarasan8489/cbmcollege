@@ -32,7 +32,7 @@ export default function MbaDepartmentPage() {
             <Award className="w-4 h-4 text-amber-300" /> AICTE Approved & Bharathiar University Affiliated
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold  tracking-tight leading-tight">
             Department of Management Studies (MBA)
           </h1>
           <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
@@ -46,21 +46,21 @@ export default function MbaDepartmentPage() {
         <div className="space-y-10">
           {/* Program Breakdown */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold font-serif text-[#2C2B5E]">MBA Program Architecture (2-Year Full-Time)</h2>
+            <h2 className="text-2xl font-bold  text-[#2C2B5E]">MBA Program Architecture (2-Year Full-Time)</h2>
             <p className="text-slate-600 text-sm leading-relaxed">
               The MBA Programme is affiliated to Bharathiar University and approved by AICTE (New Delhi). It offers a structured 26-subject curriculum across 4 semesters.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-1">
-                <span className="text-3xl font-extrabold text-[#EC1C23] font-serif">17</span>
+                <span className="text-3xl font-extrabold text-[#EC1C23] ">17</span>
                 <h3 className="text-xs font-bold text-[#2C2B5E]">Core Subjects</h3>
               </div>
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-1">
-                <span className="text-3xl font-extrabold text-[#2C2B5E] font-serif">8</span>
+                <span className="text-3xl font-extrabold text-[#2C2B5E] ">8</span>
                 <h3 className="text-xs font-bold text-[#2C2B5E]">Elective Papers</h3>
               </div>
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-1">
-                <span className="text-3xl font-extrabold text-emerald-600 font-serif">1</span>
+                <span className="text-3xl font-extrabold text-emerald-600 ">1</span>
                 <h3 className="text-xs font-bold text-[#2C2B5E]">Major Project</h3>
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function MbaDepartmentPage() {
 
           {/* 5 Specializations */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold font-serif text-[#2C2B5E]">Five Specialization Elective Tracks</h3>
+            <h3 className="text-lg font-bold  text-[#2C2B5E]">Five Specialization Elective Tracks</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { title: "Marketing", desc: "Brand management, digital marketing, consumer behavior, & market research." },
@@ -92,12 +92,12 @@ export default function MbaDepartmentPage() {
 
           {/* Eligibility */}
           <div className="bg-[#2C2B5E] text-white p-6 rounded-2xl space-y-4">
-            <h3 className="text-lg font-bold font-serif text-amber-300">Eligibility & Admission Helpline</h3>
+            <h3 className="text-lg font-bold  text-amber-300">Eligibility & Admission Helpline</h3>
             <p className="text-slate-200 text-xs leading-relaxed">
               Bachelor's Degree in any discipline under the 10+2+3 pattern. Selections are based on merit rank, entrance score, and personal interview.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-bold">Admission Contact: 9976573040 / 0422-2607259</span>
+              <span className="text-xs font-bold">Admission Contact: +91 9976573040 / 0422-2607259</span>
               <Link
                 href="/admission"
                 className="bg-[#EC1C23] hover:bg-[#c41218] text-white px-5 py-2 rounded-xl text-xs font-bold shadow"
