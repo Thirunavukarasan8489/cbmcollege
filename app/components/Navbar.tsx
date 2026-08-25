@@ -12,6 +12,11 @@ import {
   ChevronDown,
   ChevronRight,
   GraduationCap,
+  Award,
+  Sparkles,
+  BookOpen,
+  Building2,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -51,12 +56,14 @@ export default function Navbar() {
     {
       name: "About College & Founder",
       href: "/about",
-      desc: "History, Vision & Trust Objectives",
+      desc: "History, Vision & Trust Objectives (Estd. 1970)",
+      icon: GraduationCap,
     },
     {
       name: "Women Empowerment Cell",
       href: "/women-empowerment",
       desc: "Gender Sensitization & Leadership Workshops",
+      icon: Award,
     },
   ];
 
@@ -65,11 +72,13 @@ export default function Navbar() {
       name: "All Degree Programs",
       href: "/courses",
       desc: "Undergraduate, Postgraduate & Research Degrees",
+      icon: BookOpen,
     },
     {
       name: "MBA Department",
       href: "/mba-department",
       desc: "AICTE Approved 2-Year Full-Time Program",
+      icon: Sparkles,
     },
   ];
 
@@ -77,33 +86,32 @@ export default function Navbar() {
     {
       name: "Facilities & Infrastructure",
       href: "/facilities",
-      desc: "Library, Computer Labs & Men's Hostel",
+      desc: "Central Library, IT Labs & Western Ghats Hostel",
+      icon: Building2,
     },
     {
       name: "Photo & Video Gallery",
       href: "/gallery",
       desc: "Campus Events & Silver Jubilee Highlights",
+      icon: ShieldCheck,
     },
   ];
 
   return (
     <>
       <header className="sticky top-0 z-40 w-full transition-all duration-300">
-        {/* Top Header Contact Bar */}
-        <div className="bg-[#2C2B5E] text-white text-xs py-2 px-4 border-b border-indigo-900/50">
+        {/* Foreign University Top Utility Bar */}
+        <div className="bg-[#1A193B] text-white text-xs py-2 px-4 border-b border-[#D4AF37]/30 shadow-md">
           <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div className="flex items-center gap-4 text-slate-200">
-              <span className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
+              <span className="flex items-center gap-1.5 hover:text-[#D4AF37] transition-colors">
                 <Phone className="w-3.5 h-3.5 text-[#EC1C23]" />
                 <a href="tel:04222607259">0422-2607259</a> /{" "}
-                <a
-                  href="tel:+919976573040"
-                  className="font-semibold text-amber-300"
-                >
+                <a href="tel:+919976573040" className="font-bold text-[#D4AF37]">
                   +91 9976573040
                 </a>
               </span>
-              <span className="hidden md:flex items-center gap-1.5 hover:text-amber-300 transition-colors">
+              <span className="hidden md:flex items-center gap-1.5 hover:text-[#D4AF37] transition-colors">
                 <Mail className="w-3.5 h-3.5 text-[#EC1C23]" />
                 <a href="mailto:cbmcollegekovai@gmail.com">
                   cbmcollegekovai@gmail.com
@@ -111,10 +119,10 @@ export default function Navbar() {
               </span>
             </div>
             <div className="flex items-center gap-3 font-medium">
-              <span className="hidden sm:inline bg-white/10 text-slate-200 px-2.5 py-0.5 rounded text-[11px] border border-white/20">
+              <span className="hidden sm:inline bg-white/10 text-slate-200 px-2.5 py-0.5 rounded-full text-[11px] border border-white/20">
                 Affiliated to Bharathiar University
               </span>
-              <span className="bg-[#EC1C23] text-white font-bold px-2.5 py-0.5 rounded text-[11px] shadow">
+              <span className="bg-[#D4AF37] text-[#1A193B] font-extrabold px-2.5 py-0.5 rounded-full text-[11px] shadow-sm uppercase tracking-wider">
                 AICTE Approved (MBA)
               </span>
             </div>
@@ -125,8 +133,8 @@ export default function Navbar() {
         <nav
           className={`w-full transition-all duration-300 ${
             scrolled
-              ? "bg-white/95 backdrop-blur-md shadow-md py-2.5 border-b border-slate-200"
-              : "bg-white py-3.5 border-b border-slate-100"
+              ? "bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-[#D4AF37]/30"
+              : "bg-white py-3.5 border-b border-slate-200"
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
@@ -148,10 +156,10 @@ export default function Navbar() {
             <div className="hidden xl:flex items-center gap-1">
               <Link
                 href="/"
-                className={`px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                   pathname === "/"
-                    ? "bg-[#EC1C23] text-white shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                 }`}
               >
                 Home
@@ -164,10 +172,10 @@ export default function Navbar() {
                 onMouseLeave={() => setAboutDropdown(false)}
               >
                 <button
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                     ["/about", "/women-empowerment"].includes(pathname)
-                      ? "bg-[#EC1C23] text-white shadow-sm"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                   }`}
                 >
                   <span>About</span>
@@ -175,23 +183,34 @@ export default function Navbar() {
                 </button>
 
                 {aboutDropdown && (
-                  <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150 z-50">
-                    {aboutSubmenu.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`block px-3 py-2.5 rounded-xl transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-100 text-[#252525]"
-                        }`}
-                      >
-                        <div className="text-xs font-bold">{sub.name}</div>
-                        <div className="text-[11px] opacity-80 font-normal">
-                          {sub.desc}
-                        </div>
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
+                      Institutional History
+                    </div>
+                    {aboutSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-slate-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-medium leading-tight">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -203,10 +222,10 @@ export default function Navbar() {
                 onMouseLeave={() => setCoursesDropdown(false)}
               >
                 <button
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                     pathname === "/courses" || pathname === "/mba-department"
-                      ? "bg-[#EC1C23] text-white shadow-sm"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                   }`}
                 >
                   <span>Courses</span>
@@ -214,23 +233,34 @@ export default function Navbar() {
                 </button>
 
                 {coursesDropdown && (
-                  <div className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150 z-50">
-                    {coursesSubmenu.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`block px-3 py-2.5 rounded-xl transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-100 text-[#252525]"
-                        }`}
-                      >
-                        <div className="text-xs font-bold">{sub.name}</div>
-                        <div className="text-[11px] opacity-80 font-normal">
-                          {sub.desc}
-                        </div>
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
+                      Academic Disciplines
+                    </div>
+                    {coursesSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-slate-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-indigo-100 text-[#2C2B5E] flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-medium leading-tight">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -242,10 +272,10 @@ export default function Navbar() {
                 onMouseLeave={() => setCampusDropdown(false)}
               >
                 <button
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                     ["/facilities", "/gallery"].includes(pathname)
-                      ? "bg-[#EC1C23] text-white shadow-sm"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                   }`}
                 >
                   <span>Campus Life</span>
@@ -253,33 +283,44 @@ export default function Navbar() {
                 </button>
 
                 {campusDropdown && (
-                  <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150 z-50">
-                    {campusSubmenu.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`block px-3 py-2.5 rounded-xl transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-100 text-[#252525]"
-                        }`}
-                      >
-                        <div className="text-xs font-bold">{sub.name}</div>
-                        <div className="text-[11px] opacity-80 font-normal">
-                          {sub.desc}
-                        </div>
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
+                      Infrastructure & Culture
+                    </div>
+                    {campusSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-slate-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-medium leading-tight">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
 
               <Link
                 href="/admission"
-                className={`px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                   pathname === "/admission"
-                    ? "bg-[#EC1C23] text-white shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                 }`}
               >
                 Admission
@@ -287,10 +328,10 @@ export default function Navbar() {
 
               <Link
                 href="/staff"
-                className={`px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                   pathname === "/staff"
-                    ? "bg-[#EC1C23] text-white shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                 }`}
               >
                 Staff
@@ -298,10 +339,10 @@ export default function Navbar() {
 
               <Link
                 href="/contact"
-                className={`px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
                   pathname === "/contact"
-                    ? "bg-[#EC1C23] text-white shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/70"
+                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
+                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
                 }`}
               >
                 Contact
@@ -312,15 +353,15 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/admission"
-                className="hidden sm:flex items-center gap-1.5 bg-[#EC1C23] text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md hover:bg-[#c41218] transition-all transform hover:-translate-y-0.5"
+                className="hidden sm:flex items-center gap-2 bg-[#EC1C23] text-white px-5 py-2.5 rounded-xl text-xs font-extrabold shadow-lg hover:bg-[#c41218] transition-all transform hover:-translate-y-0.5 border border-[#D4AF37]/30 uppercase tracking-wider"
               >
                 <GraduationCap className="w-4 h-4 text-amber-300" />
-                <span>Apply Online</span>
+                <span>Apply Online 2026</span>
               </Link>
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden p-2 rounded-lg text-[#252525] hover:bg-slate-100 focus:outline-none transition-colors"
+                className="xl:hidden p-2 rounded-xl text-[#252525] hover:bg-slate-100 focus:outline-none transition-colors border border-slate-200"
                 aria-label="Toggle Navigation Menu"
               >
                 {isOpen ? (
@@ -334,7 +375,7 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile Fullscreen Backdrop Overlay (Sibling to Header for clean viewport fixed positioning) */}
+      {/* Mobile Fullscreen Backdrop Overlay */}
       <div
         className={`fixed inset-0 z-[999] bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 xl:hidden ${
           isOpen
@@ -344,14 +385,14 @@ export default function Navbar() {
         onClick={() => setIsOpen(false)}
       />
 
-      {/* Mobile Smooth Slide Side-Drawer Panel (Sibling to Header, viewport h-screen) */}
+      {/* Mobile Smooth Slide Side-Drawer Panel */}
       <div
         className={`fixed top-0 right-0 z-[1000] w-[85%] max-w-sm h-screen bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out xl:hidden ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Drawer Header */}
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between text-white shrink-0">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between text-white shrink-0 bg-[#2C2B5E]">
           <div className="flex items-center gap-2">
             <div className="relative w-48 h-12 shrink-0">
               <Image
@@ -359,13 +400,13 @@ export default function Navbar() {
                 alt="CBM College Emblem Logo"
                 width={300}
                 height={75}
-                className="object-contain w-auto h-full"
+                className="object-contain w-auto h-full brightness-0 invert"
               />
             </div>
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-primary transition-colors"
+            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label="Close menu"
           >
             <X className="w-5 h-5" />
@@ -379,7 +420,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
               pathname === "/"
-                ? "bg-[#EC1C23] text-white shadow"
+                ? "bg-[#2C2B5E] text-white shadow"
                 : "text-[#252525] hover:bg-slate-100"
             }`}
           >
@@ -458,7 +499,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
               pathname === "/admission"
-                ? "bg-[#EC1C23] text-white shadow"
+                ? "bg-[#2C2B5E] text-white shadow"
                 : "text-[#252525] hover:bg-slate-100"
             }`}
           >
@@ -471,7 +512,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
               pathname === "/staff"
-                ? "bg-[#EC1C23] text-white shadow"
+                ? "bg-[#2C2B5E] text-white shadow"
                 : "text-[#252525] hover:bg-slate-100"
             }`}
           >
@@ -484,7 +525,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
               pathname === "/contact"
-                ? "bg-[#EC1C23] text-white shadow"
+                ? "bg-[#2C2B5E] text-white shadow"
                 : "text-[#252525] hover:bg-slate-100"
             }`}
           >
@@ -498,7 +539,7 @@ export default function Navbar() {
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className="w-full flex items-center justify-center gap-2 bg-[#EC1C23] hover:bg-[#c41218] text-white py-3 rounded-xl text-center font-bold text-sm shadow-md transition-all"
+            className="w-full flex items-center justify-center gap-2 bg-[#EC1C23] hover:bg-[#c41218] text-white py-3 rounded-xl text-center font-bold text-sm shadow-md transition-all uppercase tracking-wider"
           >
             <GraduationCap className="w-4 h-4 text-amber-300" />
             <span>Admissions 2026 - Apply Now</span>
