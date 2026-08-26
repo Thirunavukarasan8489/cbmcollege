@@ -1,162 +1,141 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import PageSubmenu from "../components/PageSubmenu";
-import {
-  Monitor,
-  BookOpen,
-  Home,
-  ShieldCheck,
-  CheckCircle2,
-  ArrowRight,
-} from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Campus Facilities & Infrastructure",
-  description:
-    "Explore CBM College facilities including Central Research Library, Modern Computing Labs, Western Ghats Men's Hostel (140 seats), Sports, and mandatory NCC/NSS activities.",
-};
+import Image from "next/image";
+import Link from "next/link";
+import { BookOpen, Monitor, Building2, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function FacilitiesPage() {
-  const campusSubmenuItems = [
-    { label: "Facilities & Infrastructure", href: "/facilities", active: true },
-    { label: "Photo & Video Gallery", href: "/gallery" },
+  const facilities = [
+    {
+      id: "library",
+      title: "CENTRAL RESEARCH LIBRARY",
+      subtitle: "State-Recognized Learning & Research Repository",
+      desc: "Research scholars and academics all over the state visit our library for research. Equipped with comprehensive subject journals, digital e-resources, and quiet study bays.",
+      image: "/hero_1.jpg",
+      points: [
+        "Statewide scholar research visits",
+        "Thousands of reference books & journals",
+        "Quiet study bays & digital catalog search",
+      ],
+    },
+    {
+      id: "labs",
+      title: "HIGH-SPEED IT COMPUTING LABS",
+      subtitle: "Modern Computing Infrastructure with Internet Browsing",
+      desc: "Spacious, modern computer labs equipped with modern systems, updated software suites, and 24-hour lab access with high-speed internet browsing facilities.",
+      image: "/hero_2.jpg",
+      points: [
+        "Modern desktop workstation configurations",
+        "24-Hour lab access for registered scholars",
+        "High-speed internet & software development IDEs",
+      ],
+    },
+    {
+      id: "hostel",
+      title: "WESTERN GHATS MEN'S HOSTEL",
+      subtitle: "Scenic Accommodation for 140 Students",
+      desc: "Situated in a scenic background of the Western Ghats to the south and west, with provision to accommodate 140 male students under a cooperative dividing mess system.",
+      image: "/hero_3.jpg",
+      points: [
+        "140 Student capacity residential building",
+        "Western Ghats scenic hill atmosphere",
+        "Cooperative dividing mess system",
+      ],
+    },
+    {
+      id: "activities",
+      title: "NCC, NSS & YOUTH RED CROSS",
+      subtitle: "Mandatory Student Character Building Service",
+      desc: "Per Bharathiar University regulations, every student must serve in one of: NCC / NSS / SSL / YRC / Sports and Games for two years to qualify for degree award.",
+      image: "/hero_1.jpg",
+      points: [
+        "National Cadet Corps (NCC) training",
+        "National Service Scheme (NSS) social camps",
+        "Youth Red Cross (YRC) blood donation & medical aid",
+      ],
+    },
   ];
 
   return (
-    <div className="space-y-8 pb-12">
-      {/* HEADER BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-          style={{ backgroundImage: "url('/hero_3.jpg')" }}
+    <div className="space-y-16 pb-12 text-[#252525]">
+      {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Our Faculities.png`) */}
+      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+        <Image
+          src="/hero_3.jpg"
+          alt="Campus Facilities Banner"
+          fill
+          className="object-cover opacity-30"
+          priority
         />
-        {/* Brand Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
-            <Link href="/" className="hover:underline">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full space-y-2 z-10">
+          <h1 className="text-4xl font-black uppercase tracking-wider text-white">
+            OUR FACILITIES
+          </h1>
+          <div className="text-xs text-slate-400 flex items-center gap-2">
+            <Link href="/" className="hover:text-[#EC1C23]">
               Home
             </Link>
-            <span>/</span>
-            <span>Campus Life</span>
-            <span>/</span>
-            <span>Facilities</span>
+            <span>-</span>
+            <span className="text-[#EC1C23]">Facilities</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Facilities & Campus Infrastructure
-          </h1>
-          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
-            Academic resources, research central library, high-speed labs, and
-            Western Ghats residential hostel.
+        </div>
+      </div>
+
+      {/* 2. FACILITIES LIST (Matching reference screenshot `Desktop View Our Faculities.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+        <div className="text-center space-y-2">
+          <h2 className="text-3xl font-black uppercase text-[#252525] tracking-wider">
+            CAMPUS INFRASTRUCTURE & FACILITIES
+          </h2>
+          <p className="text-xs text-slate-500">
+            Providing an environment highly conducive for creative & academic endeavours
           </p>
         </div>
-      </section>
 
-      {/* PAGE SUBMENU & CONTENT */}
-      <PageSubmenu sectionTitle="Campus Life" items={campusSubmenuItems}>
         <div className="space-y-12">
-          {/* Central Library */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-100 text-[#EC1C23] flex items-center justify-center font-bold">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold  text-[#2C2B5E]">
-                  State-Recognized Central Library
-                </h2>
-                <p className="text-xs text-[#EC1C23] font-bold uppercase tracking-wider">
-                  Research Repository
+          {facilities.map((fac, idx) => (
+            <div
+              key={fac.id}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm ${
+                idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+              }`}
+            >
+              <div className="lg:col-span-7 space-y-4">
+                <span className="bg-[#EC1C23] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                  CBM FACILITY #{idx + 1}
+                </span>
+                <h3 className="text-2xl font-black uppercase text-[#252525]">
+                  {fac.title}
+                </h3>
+                <p className="text-xs font-bold text-[#EC1C23] uppercase tracking-wide">
+                  {fac.subtitle}
                 </p>
-              </div>
-            </div>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              Our central library is a distinguished knowledge repository
-              frequented by research scholars and academicians from across Tamil
-              Nadu. It houses thousands of volumes, rare books, journals,
-              research thesis archives, and digital cataloging systems.
-            </p>
-            <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-700 pt-1">
-              <span className="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-                • Rare Books Collection
-              </span>
-              <span className="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-                • E-Journal Portals
-              </span>
-              <span className="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-                • State Research Access
-              </span>
-            </div>
-          </div>
-
-          <hr className="border-slate-100" />
-
-          {/* Computer Labs */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-[#2C2B5E] flex items-center justify-center font-bold">
-                <Monitor className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold  text-[#2C2B5E]">
-                  Modern Computing & IT Labs
-                </h2>
-                <p className="text-xs text-[#EC1C23] font-bold uppercase tracking-wider">
-                  24-Hour Lab & Internet Browsing
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {fac.desc}
                 </p>
+
+                <div className="space-y-2 pt-2 text-xs font-semibold text-slate-700">
+                  {fac.points.map((pt, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#EC1C23] shrink-0" />
+                      <span>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 relative h-[260px] rounded-lg overflow-hidden border border-slate-300 shadow">
+                <Image
+                  src={fac.image}
+                  alt={fac.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              Equipped with modern desktop workstations, high-speed internet
-              connectivity, updated software suites, and dedicated server
-              infrastructure. Round-the-clock lab access is available for
-              computer science and management scholars.
-            </p>
-          </div>
-
-          <hr className="border-slate-100" />
-
-          {/* Western Ghats Hostel */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-                <Home className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold  text-[#2C2B5E]">
-                  Western Ghats Men's Hostel
-                </h2>
-                <p className="text-xs text-emerald-700 font-bold uppercase tracking-wider">
-                  140 Capacity Accommodation
-                </p>
-              </div>
-            </div>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              Situated in the picturesque background of the Western Ghats to the
-              south and west. The hostel accommodates up to 140 male students in
-              a safe, peaceful environment. Mess expenses are shared among
-              inmates under a cooperative dividing system.
-            </p>
-          </div>
-
-          <hr className="border-slate-100" />
-
-          {/* Mandatory NCC / NSS Activities */}
-          <div className="bg-slate-900 text-white p-6 rounded-2xl space-y-4">
-            <h3 className="text-lg font-bold  text-amber-300">
-              Mandatory NCC, NSS & YRC Schemes
-            </h3>
-            <p className="text-slate-300 text-xs leading-relaxed">
-              Per Bharathiar University regulations, every undergraduate student
-              must actively serve in one of NCC, NSS, SSL, or YRC for two years
-              as a prerequisite for degree award.
-            </p>
-          </div>
+          ))}
         </div>
-      </PageSubmenu>
+      </section>
     </div>
   );
 }

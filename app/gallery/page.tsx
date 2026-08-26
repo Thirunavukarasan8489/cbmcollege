@@ -1,154 +1,245 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import PageSubmenu from "../components/PageSubmenu";
-import { Image as ImageIcon, X, Maximize2 } from "lucide-react";
+import { MapPin, Clock, Calendar } from "lucide-react";
 
 export default function GalleryPage() {
-  const [activeTab, setActiveTab] = useState<"all" | "campus" | "events" | "sports" | "jubilee">("all");
-  const [lightboxImage, setLightboxImage] = useState<any | null>(null);
-
-  const campusSubmenuItems = [
-    { label: "Facilities & Infrastructure", href: "/facilities" },
-    { label: "Photo & Video Gallery", href: "/gallery", active: true },
+  const events = [
+    {
+      day: "25",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "26",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "27",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "28",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "29",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "30",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "25",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "26",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "27",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "28",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "29",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "30",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
   ];
 
-  const galleryItems = [
-    { id: 1, category: "campus", title: "Sakethapuri Main Academic Block", desc: "Serene educational environment nestled near Western Ghats.", tag: "Campus Life", gradient: "from-[#2C2B5E] to-[#EC1C23]" },
-    { id: 2, category: "campus", title: "Western Ghats Men's Hostel", desc: "Residential building with 140 student capacity.", tag: "Hostel Facilities", gradient: "from-slate-900 to-[#2C2B5E]" },
-    { id: 3, category: "events", title: "National Seminar & Guest Lectures", desc: "Eminent academicians addressing modern social & managerial issues.", tag: "Academic Seminar", gradient: "from-amber-700 to-[#EC1C23]" },
-    { id: 4, category: "jubilee", title: "25th Silver Jubilee Celebration", desc: "Commemorating 25 years of institutional academic excellence.", tag: "25th Jubilee", gradient: "from-yellow-600 to-[#2C2B5E]" },
-    { id: 5, category: "sports", title: "Annual Athletic Meet & Sports Grounds", desc: "Inter-departmental tournaments and physical endurance events.", tag: "Sports & Games", gradient: "from-emerald-800 to-slate-900" },
-    { id: 6, category: "events", title: "Women Empowerment Cell Workshop", desc: "Sensitization and entrepreneurship workshops for women scholars.", tag: "Women Cell", gradient: "from-[#EC1C23] to-[#2C2B5E]" },
-    { id: 7, category: "campus", title: "Central Research Library Reading Room", desc: "Quiet study spaces and extensive research archives.", tag: "Central Library", gradient: "from-slate-800 to-[#EC1C23]" },
-    { id: 8, category: "events", title: "Graduation Day Ceremony", desc: "Conferring degree certificates to graduating UG and MBA cohorts.", tag: "Convocation", gradient: "from-[#EC1C23] to-amber-700" },
-    { id: 9, category: "sports", title: "NCC Cadets Parade & Republic Day", desc: "Mandatory discipline and national pride drills on campus.", tag: "NCC & NSS", gradient: "from-emerald-900 to-[#2C2B5E]" }
+  const featuredEvents = [
+    {
+      day: "20",
+      month: "Nov",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+      image: "/hero_1.jpg",
+    },
+    {
+      day: "10",
+      month: "May",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+      image: "/hero_2.jpg",
+    },
+    {
+      day: "25",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+      image: "/hero_3.jpg",
+    },
   ];
-
-  const filtered = activeTab === "all" ? galleryItems : galleryItems.filter(item => item.category === activeTab);
 
   return (
-    <div className="space-y-8 pb-12">
-      {/* BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-          style={{ backgroundImage: "url('/hero_1.jpg')" }}
+    <div className="space-y-16 pb-12 text-[#252525]">
+      {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Event page.png`) */}
+      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+        <Image
+          src="/hero_1.jpg"
+          alt="Events Banner"
+          fill
+          className="object-cover opacity-30"
+          priority
         />
-        {/* Brand Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span>/</span>
-            <span>Campus Life</span>
-            <span>/</span>
-            <span>Gallery</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Photo & Video Gallery
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full space-y-2 z-10">
+          <h1 className="text-4xl font-black uppercase tracking-wider text-white">
+            EVENT
           </h1>
-          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
-            Visual highlights from CBM College — campus infrastructure, events, and celebrations.
-          </p>
+          <div className="text-xs text-slate-400 flex items-center gap-2">
+            <Link href="/" className="hover:text-[#EC1C23]">
+              Home
+            </Link>
+            <span>-</span>
+            <span className="text-[#EC1C23]">Event</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. EVENT CARDS GRID (Matching reference screenshot `Desktop View Event page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {events.map((evt, idx) => (
+            <div
+              key={idx}
+              className="bg-slate-100 rounded-md p-6 border border-slate-200 shadow-sm flex items-start gap-4 hover:bg-slate-200/60 transition-colors"
+            >
+              <div className="text-center shrink-0">
+                <div className="text-3xl font-black text-[#EC1C23] leading-none">
+                  {evt.day}
+                </div>
+                <div className="text-xs font-bold text-slate-500 uppercase">
+                  {evt.month}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xs font-black uppercase text-[#252525] tracking-wide">
+                  {evt.title}
+                </h3>
+                <p className="text-[11px] text-slate-500 leading-relaxed">
+                  {evt.desc}
+                </p>
+                <div className="flex items-center gap-3 text-[10px] text-slate-400 font-semibold pt-1">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-[#EC1C23]" />
+                    <span>{evt.loc}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-slate-500" />
+                    <span>{evt.time}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* PAGE SUBMENU & GALLERY */}
-      <PageSubmenu sectionTitle="Campus Life" items={campusSubmenuItems}>
-        <div className="space-y-6">
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200">
-            {[
-              { id: "all", label: "All Photos" },
-              { id: "campus", label: "Campus & Hostel" },
-              { id: "events", label: "Academic Events" },
-              { id: "sports", label: "Sports & NCC" },
-              { id: "jubilee", label: "25th Jubilee" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  activeTab === tab.id
-                    ? "bg-[#EC1C23] text-white shadow"
-                    : "text-slate-600 hover:bg-white"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+      {/* 3. FREE IMPORTANT EVENTS SECTION (Matching reference screenshot `Desktop View Event page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+        <h2 className="text-2xl font-black uppercase text-[#252525] tracking-wider">
+          FREE IMPORTANT EVENTS
+        </h2>
 
-          {/* GALLERY GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setLightboxImage(item)}
-                className="group relative h-56 rounded-2xl overflow-hidden shadow-md cursor-pointer border border-slate-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-90 transition-transform duration-500 group-hover:scale-105`} />
-                
-                <div className="absolute inset-0 p-5 flex flex-col justify-between text-white z-10">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border border-white/20">
-                      {item.tag}
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Maximize2 className="w-4 h-4 text-white" />
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredEvents.map((evt, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm"
+            >
+              <div className="relative w-full h-48">
+                <Image
+                  src={evt.image}
+                  alt={evt.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex items-start gap-4">
+                <div className="text-center shrink-0">
+                  <div className="text-2xl font-black text-[#EC1C23] leading-none">
+                    {evt.day}
                   </div>
-
-                  <div className="space-y-1">
-                    <h3 className="text-base font-bold  leading-snug">{item.title}</h3>
-                    <p className="text-[11px] text-slate-200 line-clamp-2">{item.desc}</p>
+                  <div className="text-[10px] font-bold text-slate-500 uppercase">
+                    {evt.month}
                   </div>
                 </div>
+                <div className="space-y-2">
+                  <h3 className="text-xs font-black uppercase text-[#252525]">
+                    {evt.title}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 leading-relaxed">
+                    {evt.desc}
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </PageSubmenu>
-
-      {/* LIGHTBOX MODAL */}
-      {lightboxImage && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 space-y-4 shadow-2xl relative animate-in zoom-in-95 duration-150">
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className={`h-56 rounded-2xl bg-gradient-to-br ${lightboxImage.gradient} p-6 text-white flex flex-col justify-end shadow-inner`}>
-              <span className="bg-white/20 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-md uppercase w-fit mb-2">
-                {lightboxImage.tag}
-              </span>
-              <h2 className="text-xl font-bold ">{lightboxImage.title}</h2>
-            </div>
-
-            <div className="space-y-1">
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Description</h4>
-              <p className="text-slate-700 text-xs leading-relaxed">{lightboxImage.desc}</p>
-            </div>
-
-            <div className="pt-3 border-t border-slate-100 flex justify-end">
-              <button
-                onClick={() => setLightboxImage(null)}
-                className="bg-[#EC1C23] text-white px-5 py-2 rounded-xl text-xs font-bold"
-              >
-                Close Preview
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </section>
     </div>
   );
 }

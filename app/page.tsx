@@ -6,514 +6,693 @@ import Image from "next/image";
 import HeroCarousel from "./components/HeroCarousel";
 import {
   GraduationCap,
-  Award,
   BookOpen,
+  Award,
   ArrowRight,
-  PhoneCall,
-  Calendar,
-  HelpCircle,
-  ChevronDown,
-  ShieldCheck,
+  Search,
   MapPin,
-  HeartHandshake,
-  Building2,
-  Sparkles,
-  CheckCircle2,
-  Clock,
-  ChevronRight,
   Users,
+  MessageSquare,
+  Plus,
+  Minus,
+  CheckCircle2,
+  Calendar,
+  PhoneCall,
+  Clock,
+  Sparkles,
+  Tag,
+  Star,
+  Layers,
 } from "lucide-react";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [activeTab, setActiveTab] = useState<"all" | "ug" | "pg" | "management">("all");
+  const [searchName, setSearchName] = useState("");
+  const [searchCategory, setSearchCategory] = useState("all");
+  const [searchDuration, setSearchDuration] = useState("all");
 
   const faqs = [
     {
-      question: "Where is CBM College located in Coimbatore?",
+      question: "SMART LEARNING IS AN EDUCATION PLATFORM PARTNERS",
       answer:
-        "CBM College of Arts and Science is located in Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu – 641042, situated in a salubrious academic environment near the Western Ghats.",
+        "CBM College of Arts and Science is located in Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu – 641042. Inaugurated on July 1, 1974 by Late C. B. Muthuswamy Chettiar, providing value-based education.",
     },
     {
-      question: "Is CBM College recognized and affiliated?",
+      question: "EDUCATION OF TOMORROW, ROOTED IN TRADITION",
       answer:
-        "Yes, CBM College is affiliated to Bharathiar University, Coimbatore, recognized by UGC, and its MBA program is approved by AICTE, New Delhi.",
+        "Affiliated to Bharathiar University, Coimbatore, recognized by UGC, and its MBA program is approved by AICTE, New Delhi.",
     },
     {
-      question: "What courses are offered at CBM College?",
+      question: "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING",
       answer:
         "Undergraduate degrees include B.Com, B.A. Economics, B.Sc. Computer Science, B.Sc. Mathematics, B.Sc. Physics, and B.Sc. Visual Communication. Postgraduate degrees include M.A. Economics, M.Com, M.Sc. Mathematics, M.Sc. Chemistry, and full-time MBA.",
     },
     {
-      question: "How can prospective students apply for admissions?",
+      question: "BUILD EDUCATION WEBSITE USING HTML & NEXT.JS",
       answer:
         "Applications can be submitted online via our direct admission portal or obtained directly at the college campus in Kovaipudur. Reach the Admission Cell at +91 9976573040.",
     },
     {
-      question: "Does the college provide hostel facilities?",
+      question: "BEST INDUSTRY LEADERS FOR AWESOME COURSES",
       answer:
-        "Yes, CBM College features a dedicated Western Ghats view Men's Hostel building with capacity for 140 students operating under a cooperative dividing mess system.",
+        "CBM College features a dedicated Western Ghats view Men's Hostel building with capacity for 140 students operating under a cooperative dividing mess system.",
     },
   ];
 
-  const courses = [
+  const popularCourses = [
     {
-      type: "ug",
-      name: "B.Sc. Computer Science",
-      desc: "Software engineering, data structures, database architecture & web engineering.",
-      duration: "3 Years",
-      highlights: "Python, SQL, Web Dev & AI Fundamentals",
+      id: "cs",
+      title: "B.SC. COMPUTER SCIENCE",
+      faculty: "Dr. K. Kumarasamy (Principal)",
+      desc: "Software engineering, data structures, AI fundamentals, database architecture & modern web tech.",
+      students: "345",
+      reviews: "15",
+      location: "Kovaipudur, CBE",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_1.jpg",
     },
     {
-      type: "management",
-      name: "MBA (Full-Time)",
-      desc: "AICTE approved 2-year program with Marketing, Finance, HR & Systems electives.",
-      duration: "2 Years",
-      highlights: "17 Core + 8 Electives + 1 Project",
+      id: "mba",
+      title: "MBA (FULL-TIME MANAGEMENT)",
+      faculty: "Dept. of Management Studies",
+      desc: "AICTE approved 2-year full-time program with Marketing, Finance, HR, Production & Systems electives.",
+      students: "180",
+      reviews: "24",
+      location: "AICTE Approved",
+      badge: "AICTE APPROVED",
+      image: "/hero_2.jpg",
     },
     {
-      type: "ug",
-      name: "B.Com (Bachelor of Commerce)",
-      desc: "Corporate accounting, taxation, auditing & modern computerized banking systems.",
-      duration: "3 Years",
-      highlights: "Corporate Accounting & Tally GST",
-    },
-    {
-      type: "ug",
-      name: "B.Sc. Visual Communication",
-      desc: "Digital media production, graphic design, television journalism & video editing.",
-      duration: "3 Years",
-      highlights: "Studio Production & Digital Design",
-    },
-    {
-      type: "pg",
-      name: "M.Com (Master of Commerce)",
-      desc: "Advanced corporate finance, managerial economics & strategic cost accounting.",
-      duration: "2 Years",
-      highlights: "Financial Analysis & Portfolio Management",
-    },
-    {
-      type: "ug",
-      name: "B.A. Economics",
-      desc: "Macroeconomic theory, public finance, econometrics & development policy.",
-      duration: "3 Years",
-      highlights: "Indian Economy & Public Finance",
+      id: "com",
+      title: "B.COM (BACHELOR OF COMMERCE)",
+      faculty: "Dr. M. Sekar (Professor)",
+      desc: "Corporate accounting, taxation, auditing, managerial economics & computerized banking systems.",
+      students: "420",
+      reviews: "18",
+      location: "Kovaipudur, CBE",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_3.jpg",
     },
   ];
 
-  const filteredCourses =
-    activeTab === "all" ? courses : courses.filter((c) => c.type === activeTab);
+  const events = [
+    {
+      day: "25",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "26",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "27",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "28",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "29",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+    {
+      day: "30",
+      month: "June",
+      title: "BUILD EDUCATION STRATEGY",
+      desc: "Tech you how to build a complete Learning Management Offering a various of solutions meeting your need no matter",
+      loc: "Barisal, CA",
+      time: "10am - 05pm",
+    },
+  ];
+
+  const latestNews = [
+    {
+      day: "12",
+      month: "SEP",
+      title: "NEW CHICAGO SCHOOL BUDGET",
+      desc: "Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred.",
+      image: "/hero_1.jpg",
+    },
+    {
+      day: "12",
+      month: "SEP",
+      title: "NEW CHICAGO SCHOOL BUDGET",
+      desc: "Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred.",
+      image: "/hero_2.jpg",
+    },
+    {
+      day: "12",
+      month: "SEP",
+      title: "NEW CHICAGO SCHOOL BUDGET",
+      desc: "Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred.",
+      image: "/hero_3.jpg",
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: "GHOST RIAD",
+      role: "(Sir.Principal)",
+      quote:
+        "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    },
+    {
+      name: "MASUM NODI",
+      role: "(Sir.Principal Fohinni)",
+      quote:
+        "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    },
+  ];
 
   return (
-    <div className="space-y-16 pb-16 text-[#252525]">
-      {/* 1. HERO SLIDER CAROUSEL SECTION */}
+    <div className="space-y-16 pb-12 text-[#252525]">
+      {/* 1. HERO CAROUSEL BANNER SECTION */}
       <HeroCarousel />
 
-      {/* 2. STATS & METRICS STRIP */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-14 relative z-30">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white/95 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 border border-slate-200 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-          <div className="flex flex-col items-center text-center p-3 uni-card-hover">
-            <span className="text-3xl lg:text-4xl font-extrabold text-[#EC1C23]">
-              1974
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2C2B5E] mt-1">
-              Established Year
-            </span>
-            <span className="text-[11px] text-slate-500 font-medium">50+ Years Legacy</span>
+      {/* 2. HERO FEATURE 3-CARDS STRIP (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-16 lg:-mt-24 relative z-30">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-xl overflow-hidden shadow-2xl">
+          {/* Card 1: Red Feature Block */}
+          <div className="bg-[#EC1C23] text-white p-8 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <GraduationCap className="w-8 h-8 text-white" />
+                <h3 className="text-xl font-black uppercase tracking-wider">
+                  LEARN COURSES FIRST
+                </h3>
+              </div>
+              <p className="text-xs text-rose-100 leading-relaxed font-normal">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
+              </p>
+            </div>
+            <div>
+              <Link
+                href="/courses"
+                className="inline-flex items-center gap-1.5 px-4 py-2 border-2 border-white hover:bg-white hover:text-[#EC1C23] text-white rounded text-xs font-black uppercase tracking-wider transition-colors"
+              >
+                <span>REDE MORE →</span>
+              </Link>
+            </div>
           </div>
 
-          <div className="flex flex-col items-center text-center p-3 uni-card-hover">
-            <span className="text-3xl lg:text-4xl font-extrabold text-[#2C2B5E]">
-              15+
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2C2B5E] mt-1">
-              Academic Programs
-            </span>
-            <span className="text-[11px] text-slate-500 font-medium">UG, PG & MBA Degrees</span>
+          {/* Card 2: Center Image Card */}
+          <div className="relative min-h-[260px] hidden md:block">
+            <Image
+              src="/hero_2.jpg"
+              alt="CBM Campus Students"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
 
-          <div className="flex flex-col items-center text-center p-3 uni-card-hover">
-            <span className="text-3xl lg:text-4xl font-extrabold text-[#EC1C23]">
-              100%
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2C2B5E] mt-1">
-              AICTE & UGC Approved
-            </span>
-            <span className="text-[11px] text-slate-500 font-medium">Bharathiar University</span>
-          </div>
-
-          <div className="flex flex-col items-center text-center p-3 uni-card-hover">
-            <span className="text-3xl lg:text-4xl font-extrabold text-[#2C2B5E]">
-              140
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2C2B5E] mt-1">
-              Hostel Capacity
-            </span>
-            <span className="text-[11px] text-slate-500 font-medium">Western Ghats View</span>
+          {/* Card 3: Red Feature Block */}
+          <div className="bg-[#EC1C23] text-white p-8 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <BookOpen className="w-8 h-8 text-white" />
+                <h3 className="text-xl font-black uppercase tracking-wider">
+                  BOOK LIBRARY
+                </h3>
+              </div>
+              <p className="text-xs text-rose-100 leading-relaxed font-normal">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
+              </p>
+            </div>
+            <div>
+              <Link
+                href="/facilities"
+                className="inline-flex items-center gap-1.5 px-4 py-2 border-2 border-white hover:bg-white hover:text-[#EC1C23] text-white rounded text-xs font-black uppercase tracking-wider transition-colors"
+              >
+                <span>REDE MORE →</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. ANNOUNCEMENT TICKER */}
+      {/* 3. COURSE FILTER SEARCH BAR (Matching reference screenshot `Desktop Home Page.png`) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="bg-[#2C2B5E] text-white rounded-2xl p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 border-l-8 border-[#EC1C23]">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="bg-[#EC1C23] text-white px-3 py-1 rounded-md text-xs font-black uppercase tracking-wider shrink-0 flex items-center gap-1 shadow">
-              <Calendar className="w-3.5 h-3.5" /> Latest Notice
-            </span>
-            <p className="text-sm font-medium text-slate-100">
-              Applications for Academic Year 2026-27 Undergraduate & MBA Admissions are open. Contact Admission Helpline at +91 9976573040.
-            </p>
-          </div>
-          <Link
-            href="/admission"
-            className="shrink-0 bg-white text-[#EC1C23] hover:bg-rose-50 transition-colors px-5 py-2.5 rounded-xl text-xs font-bold shadow-md"
+        <div className="bg-slate-100 rounded-lg p-4 border border-slate-200 shadow-sm">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              window.location.href = `/courses?search=${encodeURIComponent(
+                searchName
+              )}&cat=${searchCategory}&duration=${searchDuration}`;
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
           >
-            Apply Online →
-          </Link>
+            <input
+              type="text"
+              placeholder="Enter course name"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-[#252525]"
+            />
+            <select
+              value={searchCategory}
+              onChange={(e) => setSearchCategory(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-slate-600"
+            >
+              <option value="all">Select category</option>
+              <option value="ug">Undergraduate (UG)</option>
+              <option value="pg">Postgraduate (PG)</option>
+              <option value="management">Management (MBA)</option>
+            </select>
+            <select
+              value={searchDuration}
+              onChange={(e) => setSearchDuration(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-slate-600"
+            >
+              <option value="all">Time / Duration</option>
+              <option value="3">3 Years (UG)</option>
+              <option value="2">2 Years (PG & MBA)</option>
+            </select>
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#EC1C23] hover:bg-[#c41218] text-white rounded text-xs font-black uppercase tracking-wider transition-colors shadow"
+            >
+              SEARCH
+            </button>
+          </form>
         </div>
       </section>
 
-      {/* 4. "THE CBM DISTINCTION" — 4 PILLARS SHOWCASE */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 bg-rose-50 text-[#EC1C23] px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest border border-rose-100">
-            <Sparkles className="w-4 h-4 text-[#EC1C23]" />
-            <span>The CBM Distinction</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#2C2B5E] leading-tight">
-            Fostering World-Class Academic & Leadership Excellence
+      {/* 4. WELCOME TO CBM COLLEGE SECTION (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 text-center">
+        <div className="max-w-3xl mx-auto space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-black uppercase text-[#EC1C23] tracking-wide">
+            WELCOME TO CBM COLLEGE
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Founded by Late C. B. Muthuswamy Chettiar under the CBM Sakunthala Memorial Trust, dedicated to value-based education since July 1, 1974.
+          <p className="text-xs font-bold uppercase tracking-widest text-[#252525]">
+            AWESOME SUCCESS WITH STUDENT
+          </p>
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-2xl mx-auto">
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm uni-card-hover flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-rose-100 text-[#EC1C23] flex items-center justify-center group-hover:bg-[#EC1C23] group-hover:text-white transition-all shadow-sm">
-                <GraduationCap className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[#2C2B5E] leading-snug">
-                Department of Management (MBA)
-              </h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                AICTE approved 2-year full-time MBA program with specializations in Marketing, Finance, HR, Production & Systems.
-              </p>
+        {/* 3 Column Icon Feature Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-rose-100 text-[#EC1C23] rounded-lg shrink-0">
+              <GraduationCap className="w-8 h-8" />
             </div>
-            <div className="pt-6 mt-4 border-t border-slate-100">
-              <Link
-                href="/mba-department"
-                className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
-              >
-                <span>Explore MBA Program</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
+            <div className="space-y-1.5">
+              <h3 className="text-sm font-black uppercase tracking-wider text-[#252525]">
+                LEARN COURSES FIRST
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
+              </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm uni-card-hover flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-indigo-100 text-[#2C2B5E] flex items-center justify-center group-hover:bg-[#2C2B5E] group-hover:text-white transition-all shadow-sm">
-                <BookOpen className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[#2C2B5E] leading-snug">
-                State Research Library & IT Labs
-              </h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Distinguished central library visited by scholars statewide, equipped with high-speed computing and internet browsing.
-              </p>
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-rose-100 text-[#EC1C23] rounded-lg shrink-0">
+              <Tag className="w-8 h-8" />
             </div>
-            <div className="pt-6 mt-4 border-t border-slate-100">
-              <Link
-                href="/facilities"
-                className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
-              >
-                <span>View Campus Facilities</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
+            <div className="space-y-1.5">
+              <h3 className="text-sm font-black uppercase tracking-wider text-[#252525]">
+                15+ COURSES AVAILABLE
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
+              </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm uni-card-hover flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:text-white transition-all shadow-sm">
-                <Building2 className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[#2C2B5E] leading-snug">
-                Western Ghats Men's Hostel
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-rose-100 text-[#EC1C23] rounded-lg shrink-0">
+              <Award className="w-8 h-8" />
+            </div>
+            <div className="space-y-1.5">
+              <h3 className="text-sm font-black uppercase tracking-wider text-[#252525]">
+                EVERYTHING YOU NEED
               </h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Scenic residential accommodation for 140 male scholars with cooperative dividing mess system and serene surroundings.
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
               </p>
-            </div>
-            <div className="pt-6 mt-4 border-t border-slate-100">
-              <Link
-                href="/facilities"
-                className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
-              >
-                <span>Hostel Details</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm uni-card-hover flex flex-col justify-between group">
-            <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center group-hover:bg-emerald-700 group-hover:text-white transition-all shadow-sm">
-                <HeartHandshake className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[#2C2B5E] leading-snug">
-                NCC, NSS & Youth Red Cross
-              </h3>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Mandatory 2-year service in NCC, NSS, SSL, or YRC for degree qualification per Bharathiar University regulations.
-              </p>
-            </div>
-            <div className="pt-6 mt-4 border-t border-slate-100">
-              <Link
-                href="/facilities"
-                className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
-              >
-                <span>Social Activities</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. INSTITUTIONAL FOUNDER & HERITAGE SPOTLIGHT */}
-      <section className="bg-gradient-to-r from-slate-950 via-[#2C2B5E] to-[#EC1C23] text-white py-16 px-4 sm:px-6 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest border border-amber-400/30">
-              <Award className="w-4 h-4 text-amber-300" />
-              <span>Founding Heritage</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
-              Carving a Place of Distinction in Coimbatore
+      {/* 5. POPULAR COURSES GRID (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="bg-slate-50 py-16 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-black uppercase text-[#252525] tracking-wider">
+              POPULAR COURSES
             </h2>
-            <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal">
-              In October 1970, <strong>Dharmapravarthana, Late C. B. Muthuswamy Chettiar</strong> established the <strong>"CBM Sakunthala Memorial Trust"</strong> to serve the educational needs of Coimbatore. The institution was formally inaugurated on <strong>July 1, 1974</strong> as a temple of value-based learning.
-            </p>
+          </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="bg-white/10 p-4 rounded-2xl border border-white/20 backdrop-blur-md">
-                <span className="text-2xl font-extrabold text-amber-300">Oct 1970</span>
-                <p className="text-xs text-slate-300 mt-1 font-medium">CBM Sakunthala Trust Formed</p>
-              </div>
-              <div className="bg-white/10 p-4 rounded-2xl border border-white/20 backdrop-blur-md">
-                <span className="text-2xl font-extrabold text-[#EC1C23]">1 July 1974</span>
-                <p className="text-xs text-slate-300 mt-1 font-medium">College Inaugurated</p>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 bg-[#EC1C23] hover:bg-[#c41218] text-white px-6 py-3 rounded-xl text-xs font-bold shadow-lg transition-all"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {popularCourses.map((c) => (
+              <div
+                key={c.id}
+                className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
               >
-                <span>Read Institutional History</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+                <div>
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={c.image}
+                      alt={c.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
 
-          <div className="lg:col-span-5 relative">
-            <div className="relative w-full h-[340px] sm:h-[400px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-              <Image
-                src="/hero_1.jpg"
-                alt="CBM College Historical Heritage Campus"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2C2B5E] via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 bg-slate-950/80 p-4 rounded-2xl backdrop-blur-md border border-white/10">
-                <div className="text-xs font-extrabold text-amber-300 uppercase tracking-wider">CBM Sakunthala Memorial Trust</div>
-                <div className="text-xs text-slate-200 mt-0.5">Late C. B. Muthuswamy Chettiar • Founder & Chief Donor</div>
+                  <div className="p-6 space-y-3">
+                    <h3 className="text-base font-black text-[#252525] uppercase tracking-wide">
+                      {c.title}
+                    </h3>
+
+                    {/* Faculty Avatar */}
+                    <div className="flex items-center gap-2 pt-1">
+                      <div className="w-8 h-8 rounded-full bg-[#EC1C23] text-white flex items-center justify-center text-xs font-bold shrink-0">
+                        {c.faculty.charAt(0)}
+                      </div>
+                      <div className="text-xs text-slate-500 font-medium">
+                        {c.faculty}
+                      </div>
+                    </div>
+
+                    {/* Star Rating */}
+                    <div className="flex items-center gap-1 text-amber-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 text-slate-300 fill-current" />
+                    </div>
+
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {c.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Course Card Footer Strip */}
+                <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5" />
+                      <span>{c.students}</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span>{c.reviews}</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>{c.location}</span>
+                    </span>
+                  </div>
+                  <span className="bg-[#EC1C23] text-white font-bold text-[10px] px-2.5 py-1 rounded">
+                    {c.badge}
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. FEATURED DEGREE CATALOG */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <span className="text-xs font-extrabold tracking-widest text-[#EC1C23] uppercase">
-              Academic Degrees & Offerings
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2C2B5E]">
-              Featured Degree Programs
-            </h2>
-            <p className="text-xs text-slate-500 max-w-lg">
-              Affiliated to Bharathiar University, Coimbatore & AICTE Approved MBA Department.
-            </p>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200">
-            {[
-              { id: "all", label: "All Degrees" },
-              { id: "ug", label: "Undergraduate" },
-              { id: "pg", label: "Postgraduate" },
-              { id: "management", label: "Management (MBA)" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  activeTab === tab.id
-                    ? "bg-[#2C2B5E] text-white shadow-md"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-white"
-                }`}
-              >
-                {tab.label}
-              </button>
             ))}
           </div>
+
+          <div className="flex items-center justify-center gap-2 pt-4">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#EC1C23]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+          </div>
+        </div>
+      </section>
+
+      {/* 6. DARK PARALLAX STATS SECTION (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="relative bg-slate-950 text-white py-16 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/hero_1.jpg"
+            alt="Campus background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto space-y-12 text-center z-10">
+          <div className="space-y-2">
+            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider">
+              GET 100 COURSES FOR <span className="text-[#EC1C23]">FREE</span>
+            </h2>
+            <p className="text-xs text-slate-300 max-w-xl mx-auto">
+              Tech you how to build a complete learning management system upcoming education for student
+            </p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest pt-1">
+              WE'RE GOOD AT SOME MEMBER
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="space-y-2">
+              <div className="w-12 h-12 rounded-full bg-rose-950/80 border border-[#EC1C23] text-[#EC1C23] flex items-center justify-center mx-auto">
+                <Users className="w-6 h-6" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                CERTIFIED TEACHERS
+              </div>
+              <div className="text-4xl font-black text-white">117</div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="w-12 h-12 rounded-full bg-rose-950/80 border border-[#EC1C23] text-[#EC1C23] flex items-center justify-center mx-auto">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                COURSES COMPLETE
+              </div>
+              <div className="text-4xl font-black text-white">12456</div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="w-12 h-12 rounded-full bg-rose-950/80 border border-[#EC1C23] text-[#EC1C23] flex items-center justify-center mx-auto">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                STUDENTS ENROLLED
+              </div>
+              <div className="text-4xl font-black text-white">220234</div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="w-12 h-12 rounded-full bg-rose-950/80 border border-[#EC1C23] text-[#EC1C23] flex items-center justify-center mx-auto">
+                <Award className="w-6 h-6" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                SUCCESS RATE
+              </div>
+              <div className="text-4xl font-black text-white">100%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. EVENTS GRID SECTION (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="text-center space-y-2">
+          <h2 className="text-3xl font-black uppercase text-[#252525] tracking-wider">
+            EVENTS
+          </h2>
+          <p className="text-xs text-slate-500">
+            Our upcoming event you should mind always
+          </p>
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCourses.map((c) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {events.map((evt, idx) => (
             <div
-              key={c.name}
-              className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm uni-card-hover flex flex-col justify-between group"
+              key={idx}
+              className="bg-slate-100 rounded-md p-6 border border-slate-200 shadow-sm flex items-start gap-4 hover:bg-slate-200/60 transition-colors"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="bg-rose-50 text-[#EC1C23] px-3 py-1 rounded-full uppercase tracking-wider border border-rose-100 text-[10px]">
-                    {c.type === "ug"
-                      ? "Undergraduate"
-                      : c.type === "pg"
-                        ? "Postgraduate"
-                        : "AICTE Approved MBA"}
-                  </span>
-                  <span className="flex items-center gap-1 text-slate-500 text-[11px]">
-                    <Clock className="w-3.5 h-3.5 text-amber-500" />
-                    <span>{c.duration}</span>
-                  </span>
+              <div className="text-center shrink-0">
+                <div className="text-3xl font-black text-[#EC1C23] leading-none">
+                  {evt.day}
                 </div>
-
-                <h3 className="text-xl font-bold text-[#2C2B5E] leading-snug group-hover:text-[#EC1C23] transition-colors">
-                  {c.name}
-                </h3>
-
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  {c.desc}
-                </p>
-
-                <div className="flex items-center gap-1.5 text-xs text-slate-700 font-semibold pt-1">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>{c.highlights}</span>
+                <div className="text-xs font-bold text-slate-500 uppercase">
+                  {evt.month}
                 </div>
               </div>
-
-              <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] text-slate-500 font-medium">
-                  Bharathiar University
-                </span>
-                <Link
-                  href="/courses"
-                  className="text-xs font-bold text-[#EC1C23] hover:underline flex items-center gap-1"
-                >
-                  <span>View Details</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
+              <div className="space-y-2">
+                <h3 className="text-xs font-black uppercase text-[#252525] tracking-wide">
+                  {evt.title}
+                </h3>
+                <p className="text-[11px] text-slate-500 leading-relaxed">
+                  {evt.desc}
+                </p>
+                <div className="flex items-center gap-3 text-[10px] text-slate-400 font-semibold pt-1">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-[#EC1C23]" />
+                    <span>{evt.loc}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-slate-500" />
+                    <span>{evt.time}</span>
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </section>
 
-        <div className="text-center pt-4">
-          <Link
-            href="/courses"
-            className="inline-flex items-center gap-2 bg-[#2C2B5E] hover:bg-[#1e1d44] text-white px-8 py-3.5 rounded-2xl text-xs font-bold shadow-lg transition-all"
-          >
-            <span>Browse Full Catalog (15+ Programs)</span>
-            <ArrowRight className="w-4 h-4 text-amber-300" />
-          </Link>
+      {/* 8. INFORMATION CALLOUT BANNER (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="bg-slate-900 text-white py-12 px-4 sm:px-6 text-center">
+        <div className="max-w-4xl mx-auto space-y-4">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider">
+            INFORMATION FOR TEACHERS AND STUDENTS, EVENT INFORMATION AND{" "}
+            <span className="text-[#EC1C23]">EDUCATION NEWS</span>
+          </h2>
+          <p className="text-xs text-slate-400">
+            ONE OF THE MOST COMPLETE EDUCATION THEME
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-3 bg-[#EC1C23] hover:bg-[#c41218] text-white rounded text-xs font-black uppercase tracking-wider transition-colors shadow-lg"
+            >
+              CONTACT US
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 7. GEO FAQ ACCORDION FOR AI ANSWER ENGINES */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+      {/* 9. LATEST NEWS GRID SECTION (Matching reference screenshot `Desktop Home Page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-1 text-xs font-extrabold uppercase tracking-widest text-[#EC1C23] bg-rose-50 px-3.5 py-1.5 rounded-full border border-rose-100">
-            <HelpCircle className="w-4 h-4 text-[#EC1C23]" />
-            <span>Frequently Asked Questions</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2C2B5E]">
-            Key Facts About CBM College
+          <h2 className="text-3xl font-black uppercase text-[#252525] tracking-wider">
+            LATEST NEWS
           </h2>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
-            Factual answers regarding admissions, university affiliation, AICTE approval, and hostel accommodation.
+          <p className="text-xs text-slate-500">
+            Something for education news, latest news feed
           </p>
         </div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, index) => {
-            const isOpen = openFaq === index;
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(isOpen ? null : index)}
-                  className="w-full px-6 py-4.5 text-left font-bold text-[#2C2B5E] flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors text-sm sm:text-base"
-                >
-                  <span>{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#EC1C23] shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                    {faq.answer}
-                  </div>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {latestNews.map((news, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm"
+            >
+              <div className="relative w-full h-48">
+                <Image
+                  src={news.image}
+                  alt={news.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute top-3 left-3 bg-[#EC1C23] text-white text-center p-2 rounded w-11 shadow">
+                  <div className="text-sm font-black leading-none">{news.day}</div>
+                  <div className="text-[9px] font-bold uppercase">{news.month}</div>
+                </div>
               </div>
-            );
-          })}
+              <div className="p-6 space-y-3">
+                <h3 className="text-sm font-black uppercase text-[#252525] tracking-wide">
+                  {news.title}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {news.desc}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* 8. ADMISSION CTA BANNER */}
+      {/* 10. TESTIMONIALS & FREQUENTLY ASKED QUESTIONS (Matching reference screenshot `Desktop Home Page.png`) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="bg-gradient-to-r from-slate-950 via-[#2C2B5E] to-[#EC1C23] text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border-r-8 border-[#EC1C23]">
-          <div className="space-y-4 max-w-xl z-10">
-            <span className="bg-[#EC1C23] text-white text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-md shadow">
-              Admissions Open 2026-27
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight">
-              Begin Your Academic Journey at CBM College
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left Column: Testimonials */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-black uppercase tracking-wider text-[#252525]">
+              TESTIMONIALS
             </h2>
-            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
-              Reach out to our admission officers today to learn more about application procedures, university approval, and campus hostel visits.
-            </p>
+            <div className="space-y-4">
+              {testimonials.map((t, idx) => (
+                <div
+                  key={idx}
+                  className="bg-slate-100 p-6 rounded-md border border-slate-200 space-y-3"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#EC1C23] text-white font-bold flex items-center justify-center text-sm">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="text-xs font-black text-[#252525]">
+                        {t.name}{" "}
+                        <span className="text-[11px] font-medium text-slate-400">
+                          {t.role}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed italic">
+                    "{t.quote}"
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 z-10">
-            <a
-              href="tel:+919976573040"
-              className="flex items-center gap-3 bg-[#EC1C23] hover:bg-[#c41218] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-xl transition-transform hover:scale-105"
-            >
-              <PhoneCall className="w-5 h-5" />
-              <span>Call Helpline: +91 9976573040</span>
-            </a>
-            <Link
-              href="/admission"
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-4 rounded-xl font-bold text-sm backdrop-blur-md transition-colors"
-            >
-              <span>Online Portal</span>
-            </Link>
+          {/* Right Column: FAQ Accordion */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-black uppercase tracking-wider text-[#252525]">
+              FREQUENTLY ASKED QUESTIONS
+            </h2>
+            <div className="space-y-3">
+              {faqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div
+                    key={index}
+                    className="border border-slate-200 rounded-md overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      className="w-full p-3.5 bg-slate-100 hover:bg-slate-200 text-left text-xs font-black uppercase tracking-wide text-[#252525] flex items-center justify-between gap-3 transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded border border-slate-400 flex items-center justify-center text-[10px] shrink-0 text-slate-600">
+                          {isOpen ? <Minus className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
+                        </div>
+                        <span>{faq.question}</span>
+                      </div>
+                    </button>
+                    {isOpen && (
+                      <div className="p-4 bg-white text-xs text-slate-500 leading-relaxed border-t border-slate-200">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

@@ -5,40 +5,30 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
-  Phone,
+  MapPin,
   Mail,
+  Phone,
+  Globe,
+  Search,
   Menu,
   X,
   ChevronDown,
-  ChevronRight,
   GraduationCap,
   Award,
-  Sparkles,
   BookOpen,
+  Sparkles,
   Building2,
   ShieldCheck,
+  Share2,
 } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [aboutDropdown, setAboutDropdown] = useState(false);
   const [coursesDropdown, setCoursesDropdown] = useState(false);
   const [campusDropdown, setCampusDropdown] = useState(false);
   const pathname = usePathname();
-
-  // Scroll listener for sticky navbar background
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -56,7 +46,7 @@ export default function Navbar() {
     {
       name: "About College & Founder",
       href: "/about",
-      desc: "History, Vision & Trust Objectives (Estd. 1970)",
+      desc: "History, Vision & CBM Sakunthala Trust (Estd. 1970)",
       icon: GraduationCap,
     },
     {
@@ -98,398 +88,453 @@ export default function Navbar() {
   ];
 
   return (
-    <>
-      <header className="sticky top-0 z-40 w-full transition-all duration-300">
-        {/* Foreign University Top Utility Bar */}
-        <div className="bg-[#1A193B] text-white text-xs py-2 px-4 border-b border-[#D4AF37]/30 shadow-md">
-          <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div className="flex items-center gap-4 text-slate-200">
-              <span className="flex items-center gap-1.5 hover:text-[#D4AF37] transition-colors">
-                <Phone className="w-3.5 h-3.5 text-[#EC1C23]" />
-                <a href="tel:04222607259">0422-2607259</a> /{" "}
-                <a href="tel:+919976573040" className="font-bold text-[#D4AF37]">
-                  +91 9976573040
-                </a>
-              </span>
-              <span className="hidden md:flex items-center gap-1.5 hover:text-[#D4AF37] transition-colors">
-                <Mail className="w-3.5 h-3.5 text-[#EC1C23]" />
-                <a href="mailto:cbmcollegekovai@gmail.com">
-                  cbmcollegekovai@gmail.com
-                </a>
-              </span>
+    <header className="w-full relative z-50">
+      {/* 1. TOP UTILITY BAR (Black/Dark Background #141414 matching reference screenshot) */}
+      <div className="bg-[#141414] text-slate-300 text-xs py-2 px-4 border-b border-zinc-800">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+          {/* Contact Details */}
+          <div className="flex flex-wrap items-center gap-4 text-[11px] sm:text-xs">
+            <span className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <MapPin className="w-3.5 h-3.5 text-[#EC1C23]" />
+              <span>Sakethapuri, Kovaipudur, Coimbatore – 641042</span>
+            </span>
+            <span className="hidden md:flex items-center gap-1.5 hover:text-white transition-colors">
+              <Mail className="w-3.5 h-3.5 text-[#EC1C23]" />
+              <a href="mailto:cbmcollegekovai@gmail.com">
+                cbmcollegekovai@gmail.com
+              </a>
+            </span>
+            <span className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone className="w-3.5 h-3.5 text-[#EC1C23]" />
+              <a href="tel:04222607259">0422-2607259</a> /{" "}
+              <a href="tel:+919976573040" className="text-amber-400 font-semibold">
+                +91 9976573040
+              </a>
+            </span>
+          </div>
+
+          {/* Language Selector & Social Links */}
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="hidden sm:flex items-center gap-1.5 text-[11px] cursor-pointer hover:text-white transition-colors border-r border-zinc-700 pr-3">
+              <Globe className="w-3.5 h-3.5 text-[#EC1C23]" />
+              <span>English</span>
+              <ChevronDown className="w-3 h-3" />
             </div>
-            <div className="flex items-center gap-3 font-medium">
-              <span className="hidden sm:inline bg-white/10 text-slate-200 px-2.5 py-0.5 rounded-full text-[11px] border border-white/20">
-                Affiliated to Bharathiar University
-              </span>
-              <span className="bg-[#D4AF37] text-[#1A193B] font-extrabold px-2.5 py-0.5 rounded-full text-[11px] shadow-sm uppercase tracking-wider">
-                AICTE Approved (MBA)
-              </span>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="#"
+                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                aria-label="Facebook"
+              >
+                f
+              </a>
+              <a
+                href="#"
+                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                aria-label="Twitter"
+              >
+                X
+              </a>
+              <a
+                href="#"
+                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                aria-label="Youtube"
+              >
+                G+
+              </a>
+              <a
+                href="#"
+                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                aria-label="Pinterest"
+              >
+                p
+              </a>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Main Navbar */}
-        <nav
-          className={`w-full transition-all duration-300 ${
-            scrolled
-              ? "bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-[#D4AF37]/30"
-              : "bg-white py-3.5 border-b border-slate-200"
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-            {/* Logo & College Brand */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-64 sm:w-72 h-16 sm:h-20 shrink-0 group-hover:scale-105 transition-transform">
-                <Image
-                  src="/logo.png"
-                  alt="CBM College Emblem Logo"
-                  width={500}
-                  height={125}
-                  className="object-contain w-auto h-full"
-                  priority
-                />
-              </div>
+      {/* 2. MAIN NAVIGATION HEADER (White Navbar matching reference screenshot) */}
+      <nav className="bg-white border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <div className="relative w-56 sm:w-64 h-14 sm:h-16">
+              <Image
+                src="/logo.png"
+                alt="CBM College Emblem Logo"
+                width={450}
+                height={110}
+                className="object-contain w-auto h-full"
+                priority
+              />
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <Link
+              href="/"
+              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                pathname === "/"
+                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                  : "text-[#252525] hover:text-[#EC1C23]"
+              }`}
+            >
+              HOME
             </Link>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden xl:flex items-center gap-1">
-              <Link
-                href="/"
-                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                  pathname === "/"
-                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                }`}
-              >
-                Home
-              </Link>
-
-              {/* About Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setAboutDropdown(true)}
-                onMouseLeave={() => setAboutDropdown(false)}
-              >
-                <button
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                    ["/about", "/women-empowerment"].includes(pathname)
-                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                  }`}
-                >
-                  <span>About</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </button>
-
-                {aboutDropdown && (
-                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
-                      Institutional History
-                    </div>
-                    {aboutSubmenu.map((sub) => {
-                      const Icon = sub.icon;
-                      return (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
-                            pathname === sub.href
-                              ? "bg-[#2C2B5E] text-white"
-                              : "hover:bg-slate-50 text-[#252525]"
-                          }`}
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold">{sub.name}</div>
-                            <div className="text-[11px] opacity-75 font-medium leading-tight">
-                              {sub.desc}
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Courses Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setCoursesDropdown(true)}
-                onMouseLeave={() => setCoursesDropdown(false)}
-              >
-                <button
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                    pathname === "/courses" || pathname === "/mba-department"
-                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                  }`}
-                >
-                  <span>Courses</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </button>
-
-                {coursesDropdown && (
-                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
-                      Academic Disciplines
-                    </div>
-                    {coursesSubmenu.map((sub) => {
-                      const Icon = sub.icon;
-                      return (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
-                            pathname === sub.href
-                              ? "bg-[#2C2B5E] text-white"
-                              : "hover:bg-slate-50 text-[#252525]"
-                          }`}
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-indigo-100 text-[#2C2B5E] flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold">{sub.name}</div>
-                            <div className="text-[11px] opacity-75 font-medium leading-tight">
-                              {sub.desc}
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Campus Life Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setCampusDropdown(true)}
-                onMouseLeave={() => setCampusDropdown(false)}
-              >
-                <button
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                    ["/facilities", "/gallery"].includes(pathname)
-                      ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                      : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                  }`}
-                >
-                  <span>Campus Life</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </button>
-
-                {campusDropdown && (
-                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#EC1C23] px-3 pt-1">
-                      Infrastructure & Culture
-                    </div>
-                    {campusSubmenu.map((sub) => {
-                      const Icon = sub.icon;
-                      return (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
-                            pathname === sub.href
-                              ? "bg-[#2C2B5E] text-white"
-                              : "hover:bg-slate-50 text-[#252525]"
-                          }`}
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold">{sub.name}</div>
-                            <div className="text-[11px] opacity-75 font-medium leading-tight">
-                              {sub.desc}
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/admission"
-                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                  pathname === "/admission"
-                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                }`}
-              >
-                Admission
-              </Link>
-
-              <Link
-                href="/staff"
-                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                  pathname === "/staff"
-                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                }`}
-              >
-                Staff
-              </Link>
-
-              <Link
-                href="/contact"
-                className={`px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
-                  pathname === "/contact"
-                    ? "bg-[#2C2B5E] text-white shadow-md border border-[#D4AF37]/50"
-                    : "text-[#252525] hover:text-[#EC1C23] hover:bg-rose-50/80"
-                }`}
-              >
-                Contact
-              </Link>
-            </div>
-
-            {/* Action CTA & Mobile Toggle */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="/admission"
-                className="hidden sm:flex items-center gap-2 bg-[#EC1C23] text-white px-5 py-2.5 rounded-xl text-xs font-extrabold shadow-lg hover:bg-[#c41218] transition-all transform hover:-translate-y-0.5 border border-[#D4AF37]/30 uppercase tracking-wider"
-              >
-                <GraduationCap className="w-4 h-4 text-amber-300" />
-                <span>Apply Online 2026</span>
-              </Link>
-
+            {/* About Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setAboutDropdown(true)}
+              onMouseLeave={() => setAboutDropdown(false)}
+            >
               <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden p-2 rounded-xl text-[#252525] hover:bg-slate-100 focus:outline-none transition-colors border border-slate-200"
-                aria-label="Toggle Navigation Menu"
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                  ["/about", "/women-empowerment"].includes(pathname)
+                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                    : "text-[#252525] hover:text-[#EC1C23]"
+                }`}
               >
-                {isOpen ? (
-                  <X className="w-6 h-6 text-[#EC1C23]" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                <span>ABOUT</span>
+                <ChevronDown className="w-3.5 h-3.5" />
               </button>
-            </div>
-          </div>
-        </nav>
-      </header>
 
-      {/* Mobile Fullscreen Backdrop Overlay */}
+              {aboutDropdown && (
+                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  {aboutSubmenu.map((sub) => {
+                    const Icon = sub.icon;
+                    return (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                          pathname === sub.href
+                            ? "bg-[#2C2B5E] text-white"
+                            : "hover:bg-slate-50 text-[#252525]"
+                        }`}
+                      >
+                        <div className="w-8 h-8 rounded-md bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold">{sub.name}</div>
+                          <div className="text-[11px] opacity-75 font-normal">
+                            {sub.desc}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Courses Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCoursesDropdown(true)}
+              onMouseLeave={() => setCoursesDropdown(false)}
+            >
+              <button
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                  pathname === "/courses" || pathname === "/mba-department"
+                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                    : "text-[#252525] hover:text-[#EC1C23]"
+                }`}
+              >
+                <span>COURSES</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+
+              {coursesDropdown && (
+                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  {coursesSubmenu.map((sub) => {
+                    const Icon = sub.icon;
+                    return (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                          pathname === sub.href
+                            ? "bg-[#2C2B5E] text-white"
+                            : "hover:bg-slate-50 text-[#252525]"
+                        }`}
+                      >
+                        <div className="w-8 h-8 rounded-md bg-indigo-100 text-[#2C2B5E] flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold">{sub.name}</div>
+                          <div className="text-[11px] opacity-75 font-normal">
+                            {sub.desc}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Campus Life Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCampusDropdown(true)}
+              onMouseLeave={() => setCampusDropdown(false)}
+            >
+              <button
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                  ["/facilities", "/gallery"].includes(pathname)
+                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                    : "text-[#252525] hover:text-[#EC1C23]"
+                }`}
+              >
+                <span>CAMPUS LIFE</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+
+              {campusDropdown && (
+                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  {campusSubmenu.map((sub) => {
+                    const Icon = sub.icon;
+                    return (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                          pathname === sub.href
+                            ? "bg-[#2C2B5E] text-white"
+                            : "hover:bg-slate-50 text-[#252525]"
+                        }`}
+                      >
+                        <div className="w-8 h-8 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold">{sub.name}</div>
+                          <div className="text-[11px] opacity-75 font-normal">
+                            {sub.desc}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/admission"
+              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                pathname === "/admission"
+                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                  : "text-[#252525] hover:text-[#EC1C23]"
+              }`}
+            >
+              ADMISSION
+            </Link>
+
+            <Link
+              href="/staff"
+              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                pathname === "/staff"
+                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                  : "text-[#252525] hover:text-[#EC1C23]"
+              }`}
+            >
+              STAFF
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
+                pathname === "/contact"
+                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
+                  : "text-[#252525] hover:text-[#EC1C23]"
+              }`}
+            >
+              CONTACT
+            </Link>
+          </div>
+
+          {/* Integrated Search Box (Matching reference screenshot `Desktop Home Page.png`) */}
+          <div className="hidden md:flex items-center">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  window.location.href = `/courses?search=${encodeURIComponent(
+                    searchQuery
+                  )}`;
+                }
+              }}
+              className="flex items-center overflow-hidden rounded-md border border-slate-300"
+            >
+              <input
+                type="text"
+                placeholder="Search courses..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-3 py-2 text-xs w-44 lg:w-52 text-[#252525] focus:outline-none bg-slate-50"
+              />
+              <button
+                type="submit"
+                className="bg-[#EC1C23] hover:bg-[#c41218] text-white p-2.5 transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded-md bg-slate-100 hover:bg-slate-200 text-[#252525] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-6 h-6 text-[#EC1C23]" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* 3. MOBILE FULLSCREEN DRAWER OVERLAY */}
       <div
-        className={`fixed inset-0 z-[999] bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 xl:hidden ${
-          isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[999] bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       />
 
-      {/* Mobile Smooth Slide Side-Drawer Panel */}
+      {/* Mobile Off-Canvas Slide Drawer Panel */}
       <div
-        className={`fixed top-0 right-0 z-[1000] w-[85%] max-w-sm h-screen bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out xl:hidden ${
+        className={`fixed top-0 right-0 z-[1000] w-[85%] max-w-sm h-screen bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out lg:hidden ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Drawer Header */}
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between text-white shrink-0 bg-[#2C2B5E]">
-          <div className="flex items-center gap-2">
-            <div className="relative w-48 h-12 shrink-0">
-              <Image
-                src="/logo.png"
-                alt="CBM College Emblem Logo"
-                width={300}
-                height={75}
-                className="object-contain w-auto h-full brightness-0 invert"
-              />
-            </div>
+        <div className="p-4 bg-[#141414] text-white flex items-center justify-between border-b border-zinc-800 shrink-0">
+          <div className="relative w-44 h-10">
+            <Image
+              src="/logo.png"
+              alt="CBM College Emblem Logo"
+              width={300}
+              height={75}
+              className="object-contain w-auto h-full brightness-0 invert"
+            />
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
-            aria-label="Close menu"
+            className="p-1.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Drawer Scrollable Content Body */}
+        {/* Mobile Search Input Box */}
+        <div className="p-4 border-b border-slate-100 bg-slate-50 shrink-0">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (searchQuery.trim()) {
+                setIsOpen(false);
+                window.location.href = `/courses?search=${encodeURIComponent(
+                  searchQuery
+                )}`;
+              }
+            }}
+            className="flex items-center rounded-md border border-slate-300 overflow-hidden bg-white"
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-3 py-2 text-xs text-[#252525] focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="bg-[#EC1C23] text-white p-2.5"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+
+        {/* Mobile Scrollable Menu Links */}
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-              pathname === "/"
-                ? "bg-[#2C2B5E] text-white shadow"
-                : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
+              pathname === "/" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
             }`}
           >
-            <span>Home</span>
-            <ChevronRight className="w-4 h-4 opacity-50" />
+            HOME
           </Link>
 
-          {/* Mobile About Accordion */}
-          <div className="border border-slate-200/80 rounded-2xl p-2.5 space-y-1.5 bg-slate-50">
-            <span className="text-[11px] font-extrabold text-[#EC1C23] uppercase tracking-wider px-2 block">
-              About College
+          {/* About Accordion */}
+          <div className="border border-slate-200 rounded-lg p-2.5 space-y-1.5 bg-slate-50">
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#EC1C23] px-2 block">
+              ABOUT
             </span>
             {aboutSubmenu.map((sub) => (
               <Link
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                className={`block px-3 py-2 rounded-md text-xs font-bold ${
                   pathname === sub.href
-                    ? "bg-[#2C2B5E] text-white shadow-sm"
-                    : "text-[#252525] hover:bg-white border border-transparent hover:border-slate-200"
+                    ? "bg-[#2C2B5E] text-white"
+                    : "text-[#252525] hover:bg-white"
                 }`}
               >
-                <span>{sub.name}</span>
-                <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                {sub.name}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Courses Accordion */}
-          <div className="border border-slate-200/80 rounded-2xl p-2.5 space-y-1.5 bg-slate-50">
-            <span className="text-[11px] font-extrabold text-[#EC1C23] uppercase tracking-wider px-2 block">
-              Courses & Programs
+          {/* Courses Accordion */}
+          <div className="border border-slate-200 rounded-lg p-2.5 space-y-1.5 bg-slate-50">
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#EC1C23] px-2 block">
+              COURSES
             </span>
             {coursesSubmenu.map((sub) => (
               <Link
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                className={`block px-3 py-2 rounded-md text-xs font-bold ${
                   pathname === sub.href
-                    ? "bg-[#2C2B5E] text-white shadow-sm"
-                    : "text-[#252525] hover:bg-white border border-transparent hover:border-slate-200"
+                    ? "bg-[#2C2B5E] text-white"
+                    : "text-[#252525] hover:bg-white"
                 }`}
               >
-                <span>{sub.name}</span>
-                <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                {sub.name}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Campus Life Accordion */}
-          <div className="border border-slate-200/80 rounded-2xl p-2.5 space-y-1.5 bg-slate-50">
-            <span className="text-[11px] font-extrabold text-[#EC1C23] uppercase tracking-wider px-2 block">
-              Campus Life
+          {/* Campus Life Accordion */}
+          <div className="border border-slate-200 rounded-lg p-2.5 space-y-1.5 bg-slate-50">
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#EC1C23] px-2 block">
+              CAMPUS LIFE
             </span>
             {campusSubmenu.map((sub) => (
               <Link
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                className={`block px-3 py-2 rounded-md text-xs font-bold ${
                   pathname === sub.href
-                    ? "bg-[#2C2B5E] text-white shadow-sm"
-                    : "text-[#252525] hover:bg-white border border-transparent hover:border-slate-200"
+                    ? "bg-[#2C2B5E] text-white"
+                    : "text-[#252525] hover:bg-white"
                 }`}
               >
-                <span>{sub.name}</span>
-                <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                {sub.name}
               </Link>
             ))}
           </div>
@@ -497,59 +542,45 @@ export default function Navbar() {
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-              pathname === "/admission"
-                ? "bg-[#2C2B5E] text-white shadow"
-                : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
+              pathname === "/admission" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
             }`}
           >
-            <span>Admission Procedure</span>
-            <ChevronRight className="w-4 h-4 opacity-50" />
+            ADMISSION
           </Link>
 
           <Link
             href="/staff"
             onClick={() => setIsOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-              pathname === "/staff"
-                ? "bg-[#2C2B5E] text-white shadow"
-                : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
+              pathname === "/staff" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
             }`}
           >
-            <span>Staff Directory</span>
-            <ChevronRight className="w-4 h-4 opacity-50" />
+            STAFF
           </Link>
 
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-              pathname === "/contact"
-                ? "bg-[#2C2B5E] text-white shadow"
-                : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
+              pathname === "/contact" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
             }`}
           >
-            <span>Contact Us</span>
-            <ChevronRight className="w-4 h-4 opacity-50" />
+            CONTACT
           </Link>
         </div>
 
-        {/* Drawer Footer */}
-        <div className="p-4 border-t border-slate-100 bg-slate-50 space-y-3 shrink-0">
+        {/* Drawer Footer CTA */}
+        <div className="p-4 border-t border-slate-100 bg-slate-50 shrink-0">
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className="w-full flex items-center justify-center gap-2 bg-[#EC1C23] hover:bg-[#c41218] text-white py-3 rounded-xl text-center font-bold text-sm shadow-md transition-all uppercase tracking-wider"
+            className="block w-full py-3 bg-[#EC1C23] text-white text-center rounded-md font-bold text-xs uppercase tracking-wider shadow"
           >
-            <GraduationCap className="w-4 h-4 text-amber-300" />
-            <span>Admissions 2026 - Apply Now</span>
+            APPLY ONLINE 2026
           </Link>
-
-          <div className="text-center text-[11px] text-slate-500 font-medium">
-            Sakethapuri, Kovaipudur, Coimbatore • 0422-2607259
-          </div>
         </div>
       </div>
-    </>
+    </header>
   );
 }

@@ -1,334 +1,287 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import PageSubmenu from "../components/PageSubmenu";
-import { BookOpen, Search, Clock, GraduationCap, CheckCircle2, ChevronRight, X } from "lucide-react";
-import JsonLd from "../components/JsonLd";
+import { Users, MessageSquare, MapPin, Star, Search } from "lucide-react";
 
 export default function CoursesPage() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState<"all" | "ug" | "pg" | "research">("all");
-  const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [category, setCategory] = useState("all");
+  const [duration, setDuration] = useState("all");
 
-  const coursesSubmenuItems = [
-    { label: "All Degree Programs", href: "/courses", active: true },
-    { label: "MBA Department", href: "/mba-department" },
-  ];
-
-  const coursesList = [
+  const allCourses = [
     {
-      id: "b-com",
+      id: "cs",
+      name: "B.SC. COMPUTER SCIENCE",
       category: "ug",
-      title: "B.Com (Bachelor of Commerce)",
-      dept: "Department of Commerce",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 / Higher Secondary Exam with Commerce / Accountancy / Math subjects.",
-      desc: "Provides a thorough grounding in financial accounting, corporate governance, auditing, income tax laws, and modern banking operations.",
-      highlights: ["Corporate Accounting", "Cost & Management Accounting", "Direct & Indirect Taxes", "Computerized Accounting (Tally)"]
+      duration: "3 Years",
+      faculty: "Dept. of Computer Science",
+      desc: "Software engineering, data structures, AI fundamentals, database management systems & web programming.",
+      students: "345",
+      reviews: "15",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_1.jpg",
     },
     {
-      id: "ba-econ",
-      category: "ug",
-      title: "B.A. Economics",
-      dept: "Department of Economics",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 / Higher Secondary Examination from any recognized board.",
-      desc: "Focuses on micro & macroeconomic theories, Indian economic development, quantitative economics, and financial markets.",
-      highlights: ["Indian Economy", "Public Finance", "Managerial Economics", "Agricultural & Industrial Economics"]
+      id: "mba",
+      name: "MBA (FULL-TIME MANAGEMENT)",
+      category: "management",
+      duration: "2 Years",
+      faculty: "Dept. of Management Studies",
+      desc: "AICTE approved 2-year program offering Marketing, Finance, Personnel/HR, Production & Systems electives.",
+      students: "180",
+      reviews: "24",
+      badge: "AICTE APPROVED",
+      image: "/hero_2.jpg",
     },
     {
-      id: "bsc-cs",
+      id: "com",
+      name: "B.COM (BACHELOR OF COMMERCE)",
       category: "ug",
-      title: "B.Sc. Computer Science",
-      dept: "Department of Computer Science",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 with Mathematics / Computer Science / Statistics.",
-      desc: "Equips students with solid programming foundations, database design, web engineering, software development, and computing logic.",
-      highlights: ["Python & Java Programming", "Data Structures & Algorithms", "Database Systems (SQL)", "Web Application Development"]
+      duration: "3 Years",
+      faculty: "Dept. of Commerce",
+      desc: "Corporate accounting, taxation, auditing, business law, cost accounting & computerized banking systems.",
+      students: "420",
+      reviews: "18",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_3.jpg",
     },
     {
-      id: "bsc-math",
+      id: "viscom",
+      name: "B.SC. VISUAL COMMUNICATION",
       category: "ug",
-      title: "B.Sc. Mathematics",
-      dept: "Department of Mathematics",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 with Mathematics / Higher Mathematics.",
-      desc: "Deep dive into abstract algebra, calculus, operations research, statistics, and computational mathematical modeling.",
-      highlights: ["Differential Calculus", "Real & Complex Analysis", "Operations Research", "Numerical Methods"]
+      duration: "3 Years",
+      faculty: "Dept. of Visual Media",
+      desc: "Digital media production, graphic design, photography, television journalism & non-linear video editing.",
+      students: "210",
+      reviews: "12",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_1.jpg",
     },
     {
-      id: "bsc-phys",
-      category: "ug",
-      title: "B.Sc. Physics",
-      dept: "Department of Physics",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 with Physics and Mathematics.",
-      desc: "Explores classical mechanics, quantum physics, electronics, thermodynamics, and experimental laboratory physics.",
-      highlights: ["Quantum Mechanics", "Digital Electronics", "Optics & Acoustics", "Solid State Physics"]
-    },
-    {
-      id: "bsc-viscom",
-      category: "ug",
-      title: "B.Sc. Visual Communication",
-      dept: "Department of Visual Communication",
-      duration: "3 Years (6 Semesters)",
-      eligibility: "Passed 10+2 in any stream with creative aptitude.",
-      desc: "Covers media ethics, photography, graphic designing, television production, video editing, and digital advertising.",
-      highlights: ["Digital Graphic Design", "Audio/Video Editing", "Media Aesthetics & Writing", "Film Studies & Animation"]
-    },
-    {
-      id: "mba-dept",
+      id: "mcom",
+      name: "M.COM (MASTER OF COMMERCE)",
       category: "pg",
-      title: "MBA (Master of Business Administration)",
-      dept: "Department of Management Studies",
-      duration: "2 Years (4 Semesters)",
-      eligibility: "Bachelor's Degree in any discipline from a recognized University (AICTE approved).",
-      desc: "Prestigious AICTE-approved 2-year full-time program with electives in Marketing, Finance, Personnel/HR, Production, and Systems.",
-      highlights: ["17 Core + 8 Electives + 1 Project", "AICTE & Bharathiar University Approved", "Executive Leadership Workshops", "Industry Internship Training"]
+      duration: "2 Years",
+      faculty: "Dept. of Commerce (PG)",
+      desc: "Advanced corporate finance, managerial economics, strategic cost accounting & quantitative techniques.",
+      students: "120",
+      reviews: "10",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_2.jpg",
+    },
+    {
+      id: "econ",
+      name: "B.A. ECONOMICS",
+      category: "ug",
+      duration: "3 Years",
+      faculty: "Dept. of Economics",
+      desc: "Macroeconomic theory, public finance, econometrics, Indian economic development & monetary policy.",
+      students: "190",
+      reviews: "8",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_3.jpg",
+    },
+    {
+      id: "math",
+      name: "B.SC. MATHEMATICS",
+      category: "ug",
+      duration: "3 Years",
+      faculty: "Dept. of Mathematics",
+      desc: "Algebra, calculus, differential equations, numerical methods, statistics & operations research.",
+      students: "230",
+      reviews: "14",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_1.jpg",
+    },
+    {
+      id: "phy",
+      name: "B.SC. PHYSICS",
+      category: "ug",
+      duration: "3 Years",
+      faculty: "Dept. of Physics",
+      desc: "Classical mechanics, quantum physics, electromagnetism, optics, electronics & laboratory experimentation.",
+      students: "175",
+      reviews: "9",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_2.jpg",
     },
     {
       id: "ma-econ",
+      name: "M.A. ECONOMICS",
       category: "pg",
-      title: "M.A. Economics",
-      dept: "Department of Economics",
-      duration: "2 Years (4 Semesters)",
-      eligibility: "B.A. Economics or relevant Bachelor's degree from a recognized University.",
-      desc: "Advanced theoretical & applied economics analysis, econometric methods, research methodology, and international trade.",
-      highlights: ["Advanced Micro/Macro Theory", "Econometrics & Data Analytics", "International Economics", "Development Policy"]
+      duration: "2 Years",
+      faculty: "Dept. of Economics (PG)",
+      desc: "Advanced macroeconomic policies, international trade, development economics & research methodology.",
+      students: "85",
+      reviews: "6",
+      badge: "BHARATHIAR UNIV",
+      image: "/hero_3.jpg",
     },
-    {
-      id: "m-com",
-      category: "pg",
-      title: "M.Com (Master of Commerce)",
-      dept: "Department of Commerce",
-      duration: "2 Years (4 Semesters)",
-      eligibility: "B.Com, B.B.A., or equivalent Bachelor's degree in Commerce/Management.",
-      desc: "Specialized postgraduate studies in financial management, corporate tax planning, international finance, and banking.",
-      highlights: ["Corporate Financial Management", "Strategic Cost Accounting", "Security Analysis & Portfolio", "Research Methodology"]
-    },
-    {
-      id: "m-sc-math",
-      category: "pg",
-      title: "M.Sc. Mathematics",
-      dept: "Department of Mathematics",
-      duration: "2 Years (4 Semesters)",
-      eligibility: "B.Sc. Mathematics degree from a recognized University.",
-      desc: "Higher-level study of topology, functional analysis, fluid dynamics, differential equations, and mathematical computing.",
-      highlights: ["Topology & Measure Theory", "Fluid Dynamics", "Mathematical Software", "Graph Theory"]
-    },
-    {
-      id: "m-sc-chem",
-      category: "pg",
-      title: "M.Sc. Chemistry",
-      dept: "Department of Chemistry",
-      duration: "2 Years (4 Semesters)",
-      eligibility: "B.Sc. Chemistry degree with Mathematics/Physics ancillary.",
-      desc: "Advanced studies in organic synthesis, physical chemistry, spectroscopy, analytical methods, and laboratory research.",
-      highlights: ["Organic Synthesis", "Molecular Spectroscopy", "Electrochemistry", "Research Project"]
-    },
-    {
-      id: "mphil",
-      category: "research",
-      title: "M.Phil / Ph.D Research Programs",
-      dept: "Select Research Departments",
-      duration: "Full-Time / Part-Time",
-      eligibility: "Master's degree with minimum 55% marks per Bharathiar University guidelines.",
-      desc: "Research guidance in Economics, Commerce, Mathematics, and Management Studies under recognized university guides.",
-      highlights: ["University Approved Guides", "Central Library Access", "Research Seminars", "Thesis Publication Assistance"]
-    }
   ];
 
-  const filtered = coursesList.filter((item) => {
-    const matchesCat = category === "all" || item.category === category;
-    const matchesSearch = item.title.toLowerCase().includes(search.toLowerCase()) || item.dept.toLowerCase().includes(search.toLowerCase());
-    return matchesCat && matchesSearch;
+  const filteredCourses = allCourses.filter((c) => {
+    const matchesSearch = c.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesCat = category === "all" || c.category === category;
+    const matchesDur =
+      duration === "all" || c.duration.startsWith(duration);
+    return matchesSearch && matchesCat && matchesDur;
   });
 
-  const courseSchemas = coursesList.map((c) => ({
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": c.title,
-    "description": c.desc,
-    "provider": {
-      "@type": "CollegeOrUniversity",
-      "name": "CBM College of Arts and Science",
-      "sameAs": "https://www.cbmcollege.com"
-    }
-  }));
-
   return (
-    <div className="space-y-8 pb-12">
-      <JsonLd data={courseSchemas} />
-
-      {/* HEADER BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-          style={{ backgroundImage: "url('/hero_2.jpg')" }}
+    <div className="space-y-16 pb-12 text-[#252525]">
+      {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Course Page.png`) */}
+      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+        <Image
+          src="/hero_2.jpg"
+          alt="Courses Banner"
+          fill
+          className="object-cover opacity-30"
+          priority
         />
-        {/* Brand Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span>/</span>
-            <span>Courses</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Academic Programs & Degrees
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full space-y-2 z-10">
+          <h1 className="text-4xl font-black uppercase tracking-wider text-white">
+            COURSES LIST
           </h1>
-          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
-            Undergraduate, Postgraduate, MBA, and Research degrees affiliated to Bharathiar University, Coimbatore.
-          </p>
+          <div className="text-xs text-slate-400 flex items-center gap-2">
+            <Link href="/" className="hover:text-[#EC1C23]">
+              Home
+            </Link>
+            <span>-</span>
+            <span className="text-[#EC1C23]">Courses</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. FILTER SEARCH BAR */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="bg-slate-100 rounded-lg p-4 border border-slate-200 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <input
+              type="text"
+              placeholder="Enter course name"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-[#252525]"
+            />
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-slate-600"
+            >
+              <option value="all">Select category</option>
+              <option value="ug">Undergraduate (UG)</option>
+              <option value="pg">Postgraduate (PG)</option>
+              <option value="management">Management (MBA)</option>
+            </select>
+            <select
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              className="w-full px-4 py-3 text-xs bg-white border border-slate-300 rounded focus:outline-none text-slate-600"
+            >
+              <option value="all">Time / Duration</option>
+              <option value="3">3 Years (UG)</option>
+              <option value="2">2 Years (PG & MBA)</option>
+            </select>
+            <button
+              onClick={() => {}}
+              className="w-full py-3 bg-[#EC1C23] hover:bg-[#c41218] text-white rounded text-xs font-black uppercase tracking-wider transition-colors shadow flex items-center justify-center gap-2"
+            >
+              <Search className="w-4 h-4" />
+              <span>SEARCH</span>
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* PAGE SUBMENU & CATALOG CONTENT */}
-      <PageSubmenu sectionTitle="Courses" items={coursesSubmenuItems}>
-        <div className="space-y-6">
-          {/* Search and Category Filters */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search program or department..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-xs bg-white rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#EC1C23]"
-              />
-            </div>
+      {/* 3. COURSES 3x3 GRID (Matching reference screenshot `Desktop View Course Page.png`) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {filteredCourses.map((c) => (
+            <div
+              key={c.id}
+              className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+            >
+              <div>
+                <div className="relative w-full h-48">
+                  <Image
+                    src={c.image}
+                    alt={c.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-            <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
-              {[
-                { id: "all", label: "All Degrees" },
-                { id: "ug", label: "UG" },
-                { id: "pg", label: "PG" },
-                { id: "research", label: "Research" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setCategory(tab.id as any)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    category === tab.id
-                      ? "bg-[#EC1C23] text-white shadow"
-                      : "bg-white text-slate-600 hover:bg-slate-200 border border-slate-200"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
+                <div className="p-6 space-y-3">
+                  <h3 className="text-base font-black text-[#252525] uppercase tracking-wide">
+                    {c.name}
+                  </h3>
 
-          {/* COURSES CATALOG GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filtered.map((course) => (
-              <div
-                key={course.id}
-                className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-rose-50 text-[#EC1C23] text-[10px] font-bold px-2 py-0.5 rounded border border-rose-100 uppercase tracking-wider">
-                      {course.category === "ug" ? "UG Degree" : course.category === "pg" ? "PG Degree" : "Research"}
-                    </span>
-                    <span className="flex items-center gap-1 text-[11px] text-slate-500">
-                      <Clock className="w-3.5 h-3.5 text-amber-500" />
-                      <span>{course.duration}</span>
-                    </span>
+                  {/* Faculty Badge */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <div className="w-8 h-8 rounded-full bg-[#EC1C23] text-white flex items-center justify-center text-xs font-bold shrink-0">
+                      {c.faculty.charAt(0)}
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium">
+                      {c.faculty}
+                    </div>
                   </div>
 
-                  <h3 className="text-base font-bold  text-[#2C2B5E] leading-snug">{course.title}</h3>
-                  <p className="text-[11px] font-bold text-[#EC1C23]">{course.dept}</p>
-                  <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">{course.desc}</p>
-                </div>
+                  {/* Star Rating */}
+                  <div className="flex items-center gap-1 text-amber-400">
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 text-slate-300 fill-current" />
+                  </div>
 
-                <div className="pt-4 mt-3 border-t border-slate-100 flex items-center justify-between">
-                  <button
-                    onClick={() => setSelectedCourse(course)}
-                    className="text-xs font-bold text-[#EC1C23] hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Syllabus & Eligibility</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                  <Link
-                    href="/admission"
-                    className="bg-[#2C2B5E] text-white hover:bg-[#EC1C23] text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
-                  >
-                    Apply
-                  </Link>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {c.desc}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Course Footer Strip */}
+              <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-1">
+                    <Users className="w-3.5 h-3.5" />
+                    <span>{c.students}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>{c.reviews}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{c.duration}</span>
+                  </span>
+                </div>
+                <span className="bg-[#EC1C23] text-white font-bold text-[10px] px-2.5 py-1 rounded">
+                  {c.badge}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
-      </PageSubmenu>
 
-      {/* DETAIL MODAL */}
-      {selectedCourse && (
-        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in-95 duration-150">
-            <button
-              onClick={() => setSelectedCourse(null)}
-              className="absolute top-6 right-6 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="space-y-2">
-              <span className="bg-rose-50 text-[#EC1C23] text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">
-                {selectedCourse.dept}
-              </span>
-              <h2 className="text-2xl font-bold  text-[#2C2B5E]">{selectedCourse.title}</h2>
-              <p className="text-xs text-slate-500 font-medium">Duration: {selectedCourse.duration} • Bharathiar University</p>
-            </div>
-
-            <div className="space-y-4 text-sm text-slate-600">
-              <div>
-                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-1">Eligibility Criteria</h4>
-                <p className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs leading-relaxed">{selectedCourse.eligibility}</p>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-2">Program Description</h4>
-                <p className="text-xs leading-relaxed">{selectedCourse.desc}</p>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-[#252525] text-xs uppercase tracking-wider mb-2">Key Focus Areas</h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {selectedCourse.highlights.map((h: string) => (
-                    <div key={h} className="flex items-center gap-1.5 text-xs text-slate-700 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      <span>{h}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
-              <button
-                onClick={() => setSelectedCourse(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100"
-              >
-                Close
-              </button>
-              <Link
-                href="/admission"
-                className="bg-[#EC1C23] text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow hover:bg-[#c41218] transition-all"
-              >
-                Proceed to Online Admission
-              </Link>
-            </div>
-          </div>
+        {/* Pagination Buttons */}
+        <div className="flex items-center justify-center gap-2 pt-4">
+          <button className="w-9 h-9 rounded bg-[#EC1C23] text-white font-bold text-xs shadow">
+            1
+          </button>
+          <button className="w-9 h-9 rounded bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs">
+            2
+          </button>
+          <button className="w-9 h-9 rounded bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs">
+            »
+          </button>
         </div>
-      )}
+      </section>
     </div>
   );
 }

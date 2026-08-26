@@ -1,211 +1,248 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
   MapPin,
   Phone,
   Mail,
-  Globe,
-  ArrowRight,
-  ShieldCheck,
-  Award,
-  ExternalLink,
+  ChevronRight,
+  Send,
 } from "lucide-react";
 
 export default function Footer() {
-  return (
-    <footer className="bg-[#2C2B5E] text-slate-200 pt-16 pb-8 border-t-4 border-[#EC1C23] relative overflow-hidden">
-      {/* Background Decorative Gradient Accent */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#EC1C23]/10 rounded-full blur-3xl pointer-events-none" />
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Col 1: Institutional Profile & Logo */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              {/* <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow">
-                <Image
-                  src="/logo.png"
-                  alt="CBM College Emblem Logo"
-                  width={44}
-                  height={44}
-                  className="object-contain"
-                />
-              </div> */}
-              <div>
-                <h3 className="text-tiny font-bold text-primary tracking-tight">
-                  C.B.M College of Arts and Science
-                </h3>
-                <p className="text-sm text-white tracking-wider ">
-                  (Affiliated in Bharathiar University)
-                </p>
-                <p className="text-sm text-white font-extrabold tracking-wider">
-                  Sakethapuri, Kovaipudur Coimbatore - 641 042
-                </p>
-              </div>
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 4000);
+    }
+  };
+
+  return (
+    <footer className="w-full text-slate-300">
+      {/* 1. SUBSCRIBE NOW RED BANNER (Matching reference screenshot `Desktop Home Page.png`) */}
+      <div className="bg-[#EC1C23] text-white py-10 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider">
+            SUBSCRIBE NOW
+          </h2>
+          <p className="text-xs sm:text-sm text-rose-100 max-w-2xl mx-auto font-normal">
+            Receive weekly newsletter with educational materials, new courses, most popular books, and campus updates!
+          </p>
+
+          {subscribed ? (
+            <div className="bg-white text-[#EC1C23] font-bold px-6 py-3 rounded-md text-xs inline-block shadow">
+              Thank you for subscribing to CBM College updates!
             </div>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              Sponsored by CBM Sakunthala Memorial Trust (Estd. Oct 1970 by Late
-              C. B. Muthuswamy Chettiar). Providing holistic, value-based higher
-              education in Coimbatore.
+          ) : (
+            <form
+              onSubmit={handleSubscribe}
+              className="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-xl mx-auto pt-2"
+            >
+              <input
+                type="email"
+                placeholder="Email address"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full sm:flex-1 px-4 py-3 rounded-md text-xs text-[#252525] focus:outline-none bg-white shadow-sm"
+              />
+              <button
+                type="submit"
+                className="w-full sm:w-auto px-8 py-3 bg-[#EC1C23] hover:bg-[#c41218] border-2 border-white rounded-md text-xs font-black uppercase tracking-wider transition-colors shadow-md shrink-0"
+              >
+                SUBSCRIBE
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+
+      {/* 2. MAIN FOOTER BODY (#0a0a0a Dark Background matching reference screenshot) */}
+      <div className="bg-[#0a0a0a] pt-14 pb-10 px-4 sm:px-6 border-b border-zinc-900">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Column 1: About CBM College */}
+          <div className="space-y-4">
+            <div className="relative w-56 h-14">
+              <Image
+                src="/logo.png"
+                alt="CBM College Emblem Logo"
+                width={450}
+                height={110}
+                className="object-contain w-auto h-full brightness-0 invert"
+              />
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Founded in October 1970 by Late C. B. Muthuswamy Chettiar under the CBM Sakunthala Memorial Trust. Inaugurated on July 1, 1974 to provide value-based education in Coimbatore.
             </p>
-            <div className="pt-2 flex flex-wrap gap-2 text-xs">
-              <div className="flex items-center gap-1 bg-white/10 border border-white/20 px-2.5 py-1 rounded text-slate-200">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#EC1C23]" />
-                <span>Bharathiar Univ.</span>
+            <div className="space-y-1 text-xs">
+              <Link href="/about" className="text-slate-300 hover:text-[#EC1C23] flex items-center gap-1 font-bold">
+                <span>▸ About us</span>
+              </Link>
+              <Link href="/staff" className="text-slate-300 hover:text-[#EC1C23] flex items-center gap-1 font-bold">
+                <span>▸ Faculty Members</span>
+              </Link>
+            </div>
+            <div className="flex items-center gap-2 pt-2">
+              <a
+                href="#"
+                className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="Facebook"
+              >
+                f
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="Twitter"
+              >
+                X
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="Google"
+              >
+                G+
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="Pinterest"
+              >
+                p
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Contact Us */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-white border-b border-zinc-800 pb-2">
+              CONTACT US
+            </h3>
+            <div className="space-y-3 text-xs">
+              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-md border border-zinc-800">
+                <Mail className="w-4 h-4 text-[#EC1C23] shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-white font-bold">Email Us</div>
+                  <div className="text-slate-400 text-[11px]">cbmcollegekovai@gmail.com</div>
+                  <div className="text-slate-400 text-[11px]">mba@cbmcollege.com</div>
+                </div>
               </div>
-              <div className="flex items-center gap-1 bg-white/10 border border-white/20 px-2.5 py-1 rounded text-slate-200">
-                <Award className="w-3.5 h-3.5 text-amber-400" />
-                <span>AICTE Approved (MBA)</span>
+
+              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-md border border-zinc-800">
+                <Phone className="w-4 h-4 text-[#EC1C23] shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-white font-bold">Helpline Phone</div>
+                  <div className="text-slate-400 text-[11px]">0422-2607259</div>
+                  <div className="text-amber-400 text-[11px] font-bold">+91 9976573040</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 bg-zinc-900/80 p-3 rounded-md border border-zinc-800">
+                <MapPin className="w-4 h-4 text-[#EC1C23] shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-white font-bold">Campus Address</div>
+                  <div className="text-slate-400 text-[11px]">
+                    Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu – 641042
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div>
-            <h4 className="text-white font-semibold text-base mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EC1C23]" />
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-sm">
+          {/* Column 3: Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-white border-b border-zinc-800 pb-2">
+              QUICK LINK
+            </h3>
+            <ul className="space-y-2 text-xs">
               {[
-                { name: "About Institution & Founder", href: "/about" },
-                {
-                  name: "Undergraduate & Postgraduate Degrees",
-                  href: "/courses",
-                },
-                {
-                  name: "Department of Management (MBA)",
-                  href: "/mba-department",
-                },
-                { name: "Admissions & Procedure", href: "/admission" },
-                { name: "Campus Facilities & Hostel", href: "/facilities" },
-                { name: "Women Empowerment Cell", href: "/women-empowerment" },
-                { name: "Faculty & Staff Directory", href: "/staff" },
-                { name: "Photo & Video Gallery", href: "/gallery" },
+                { label: "Our Courses", href: "/courses" },
+                { label: "About College", href: "/about" },
+                { label: "MBA Department", href: "/mba-department" },
+                { label: "Campus Facilities", href: "/facilities" },
+                { label: "Women Cell", href: "/women-empowerment" },
+                { label: "Staff Directory", href: "/staff" },
+                { label: "Admission Portal", href: "/admission" },
+                { label: "Contact Us", href: "/contact" },
               ].map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-[#EC1C23] transition-colors flex items-center gap-1.5 text-slate-300 group"
+                    className="text-slate-400 hover:text-[#EC1C23] transition-colors flex items-center gap-1.5"
                   >
-                    <ArrowRight className="w-3.5 h-3.5 text-[#EC1C23] group-hover:translate-x-1 transition-transform" />
-                    <span>{link.name}</span>
+                    <ChevronRight className="w-3 h-3 text-[#EC1C23]" />
+                    <span>{link.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3: Programs Offered */}
-          <div>
-            <h4 className="text-white font-semibold text-base mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
-              Programs Offered
-            </h4>
-            <ul className="space-y-2 text-sm text-slate-300">
-              <li>• B.A. Economics</li>
-              <li>• B.Com (Commerce)</li>
-              <li>• B.Sc. Computer Science</li>
-              <li>• B.Sc. Mathematics & Physics</li>
-              <li>• B.Sc. Visual Communication</li>
-              <li>• M.A. Economics & M.Com</li>
-              <li>• M.Sc. Mathematics & Chemistry</li>
-              <li className="text-amber-300 font-bold pt-1">
-                • Master of Business Administration (MBA)
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Campus Contact Info */}
-          <div>
-            <h4 className="text-white font-semibold text-base mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EC1C23]" />
-              Campus Contact
-            </h4>
-            <ul className="space-y-3 text-sm text-slate-300">
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-5 h-5 text-[#EC1C23] shrink-0 mt-0.5" />
-                <span>
-                  Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India –
-                  641042
-                </span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#EC1C23] shrink-0" />
-                <div>
-                  <a href="tel:04222607259" className="hover:text-amber-300">
-                    0422-2607259
-                  </a>
-                  <span className="mx-1">•</span>
-                  <a
-                    href="tel:+919976573040"
-                    className="hover:text-amber-300 font-bold text-amber-300"
-                  >
-                    +91 9976573040
-                  </a>
+          {/* Column 4: Latest Events */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-white border-b border-zinc-800 pb-2">
+              LATEST EVENTS
+            </h3>
+            <div className="space-y-3">
+              {[
+                {
+                  day: "27",
+                  month: "Dec",
+                  title: "LEARNING MANAGEMENT",
+                  time: "10am - 05pm",
+                  loc: "Gpur Academy",
+                },
+                {
+                  day: "19",
+                  month: "Dec",
+                  title: "LEARN COURSES ONLINE",
+                  time: "10am - 05pm",
+                  loc: "Gpur Academy",
+                },
+                {
+                  day: "07",
+                  month: "Dec",
+                  title: "COURSES FOR FREE GED",
+                  time: "10am - 05pm",
+                  loc: "Gpur Academy",
+                },
+              ].map((evt, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="bg-[#EC1C23] text-white text-center p-2 rounded shrink-0 w-12">
+                    <div className="text-sm font-black leading-none">{evt.day}</div>
+                    <div className="text-[9px] font-bold uppercase">{evt.month}</div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-white hover:text-[#EC1C23] transition-colors cursor-pointer">
+                      {evt.title}
+                    </h4>
+                    <div className="text-[10px] text-slate-500 mt-0.5">
+                      ⏱ {evt.time} • 📍 {evt.loc}
+                    </div>
+                  </div>
                 </div>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#EC1C23] shrink-0" />
-                <div className="flex flex-col">
-                  <a
-                    href="mailto:cbmcollegekovai@gmail.com"
-                    className="hover:text-amber-300"
-                  >
-                    cbmcollegekovai@gmail.com
-                  </a>
-                  <a
-                    href="mailto:mba@cbmcollege.com"
-                    className="hover:text-amber-300"
-                  >
-                    mba@cbmcollege.com
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-[#EC1C23] shrink-0" />
-                <a
-                  href="https://www.cbmcollege.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-amber-300"
-                >
-                  www.cbmcollege.com
-                </a>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Copyright & AI Link */}
-        <div className="pt-8 border-t border-slate-700/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>
-            © {new Date().getFullYear()} CBM College of Arts and Science. All
-            Rights Reserved.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="/contact"
-              className="hover:text-white transition-colors"
-            >
-              Location Map
-            </Link>
-            <span>•</span>
-            <Link
-              href="/admission"
-              className="hover:text-white transition-colors"
-            >
-              Admissions 2026
-            </Link>
-            <span>•</span>
-            <a
-              href="/llms.txt"
-              target="_blank"
-              className="inline-flex items-center gap-1 text-amber-300 hover:text-white font-medium"
-            >
-              <span>LLM Fact Index (llms.txt)</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+      {/* 3. COPYRIGHT FOOTER BAR */}
+      <div className="bg-[#050505] text-slate-500 text-xs py-4 px-4 text-center border-t border-zinc-900">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div>
+            Copyright © 2026 <span className="text-slate-300 font-bold">CBM College of Arts and Science</span>. All Rights Reserved.
+          </div>
+          <div className="text-[11px] text-slate-600">
+            Affiliated to Bharathiar University, Coimbatore | UGC & AICTE Approved
           </div>
         </div>
       </div>

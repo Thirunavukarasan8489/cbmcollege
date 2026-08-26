@@ -1,334 +1,177 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  MessageSquare,
-  CheckCircle2,
-  Globe,
-} from "lucide-react";
-import JsonLd from "../components/JsonLd";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
+  const [form, setForm] = useState({
+    username: "",
     email: "",
-    phone: "",
     subject: "",
     message: "",
   });
-  const [sent, setSent] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-  };
-
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    mainEntity: {
-      "@type": "EducationalOrganization",
-      name: "CBM College of Arts and Science",
-      telephone: "+91-422-2607259",
-      email: "cbmcollegekovai@gmail.com",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Sakethapuri, Kovaipudur",
-        addressLocality: "Coimbatore",
-        addressRegion: "Tamil Nadu",
-        postalCode: "641042",
-        addressCountry: "IN",
-      },
-    },
+    setSubmitted(true);
+    setForm({ username: "", email: "", subject: "", message: "" });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="space-y-16 pb-12">
-      <JsonLd data={contactSchema} />
-
-      {/* BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-          style={{ backgroundImage: "url('/hero_3.jpg')" }}
+    <div className="space-y-16 pb-12 text-[#252525]">
+      {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Contact Page.png`) */}
+      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+        <Image
+          src="/hero_2.jpg"
+          alt="Contact Us Banner"
+          fill
+          className="object-cover opacity-30"
+          priority
         />
-        {/* Brand Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
-            <Link href="/" className="hover:underline">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full space-y-2 z-10">
+          <h1 className="text-4xl font-black uppercase tracking-wider text-white">
+            CONTACT US
+          </h1>
+          <div className="text-xs text-slate-400 flex items-center gap-2">
+            <Link href="/" className="hover:text-[#EC1C23]">
               Home
             </Link>
-            <span>/</span>
-            <span>Contact Us</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-            Campus Contact & Location
-          </h1>
-          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
-            Reach out to CBM College of Arts and Science in Sakethapuri,
-            Kovaipudur, Coimbatore.
-          </p>
-        </div>
-      </section>
-
-      {/* QUICK CONTACT CARDS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Address */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-rose-100 text-[#7a1f2b] flex items-center justify-center">
-              <MapPin className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 ">
-              Campus Address
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              CBM College of Arts & Science,
-              <br />
-              Sakethapuri, Kovaipudur,
-              <br />
-              Coimbatore, Tamil Nadu, India – 641042.
-            </p>
-          </div>
-
-          {/* Phone */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
-              <Phone className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 ">
-              Phone & Mobile
-            </h3>
-            <div className="text-xs text-slate-600 space-y-1">
-              <p>
-                Office Phone:{" "}
-                <a
-                  href="tel:04222607259"
-                  className="font-bold text-slate-900 hover:text-[#7a1f2b]"
-                >
-                  0422-2607259
-                </a>
-              </p>
-              <p>
-                Admission Helpline:{" "}
-                <a
-                  href="tel:+919976573040"
-                  className="font-bold text-[#7a1f2b] hover:underline"
-                >
-                  +91 9976573040
-                </a>
-              </p>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
-              <Mail className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 ">
-              Official Emails
-            </h3>
-            <div className="text-xs text-slate-600 space-y-1">
-              <p>
-                General Enquiries:{" "}
-                <a
-                  href="mailto:cbmcollegekovai@gmail.com"
-                  className="font-bold text-slate-900 hover:underline"
-                >
-                  cbmcollegekovai@gmail.com
-                </a>
-              </p>
-              <p>
-                MBA Department:{" "}
-                <a
-                  href="mailto:mba@cbmcollege.com"
-                  className="font-bold text-slate-900 hover:underline"
-                >
-                  mba@cbmcollege.com
-                </a>
-              </p>
-            </div>
+            <span>-</span>
+            <span className="text-[#EC1C23]">Contact us</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* FORM AND GOOGLE MAP EMBED */}
+      {/* 2. FORM & CONTACT DETAILS SPLIT SECTION (Matching reference screenshot `Desktop View Contact Page.png`) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Form */}
-          <div className="lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-rose-800 uppercase tracking-widest">
-                Get In Touch
-              </span>
-              <h2 className="text-2xl font-bold  text-slate-900">
-                Send an Enquiry Message
+          {/* Left Column: Send a Message Form */}
+          <div className="lg:col-span-7 space-y-6">
+            <div>
+              <h2 className="text-2xl font-black uppercase tracking-wider text-[#252525]">
+                SEND A MESSAGE
               </h2>
-              <p className="text-xs text-slate-500">
-                Have questions about courses, admissions, or administrative
-                verification?
+              <p className="text-xs text-slate-400 mt-1">
+                Your email address will not be published.
               </p>
             </div>
 
-            {sent ? (
-              <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h4 className="text-lg font-bold text-emerald-900">
-                  Message Delivered!
-                </h4>
-                <p className="text-xs text-emerald-700">
-                  Thank you. Our college administration will review your message
-                  and respond shortly.
-                </p>
-                <button
-                  onClick={() => setSent(false)}
-                  className="text-xs font-bold text-[#7a1f2b] underline"
-                >
-                  Send another message
-                </button>
+            {submitted ? (
+              <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-md text-xs font-bold">
+                Thank you! Your message has been sent successfully to CBM College administration.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Your Name *
-                  </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     type="text"
+                    placeholder="USERNAME"
                     required
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-[#7a1f2b] focus:outline-none"
+                    value={form.username}
+                    onChange={(e) => setForm({ ...form, username: e.target.value })}
+                    className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
                   />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Phone *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Contact number"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-[#7a1f2b] focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Email ID
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Email address"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-[#7a1f2b] focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Subject
-                  </label>
                   <input
-                    type="text"
-                    placeholder="Course enquiry, certificates, hostel etc."
-                    value={formData.subject}
-                    onChange={(e) =>
-                      setFormData({ ...formData, subject: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-[#7a1f2b] focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Message *
-                  </label>
-                  <textarea
-                    rows={4}
+                    type="email"
+                    placeholder="EMAIL"
                     required
-                    placeholder="Write your detailed message..."
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-[#7a1f2b] focus:outline-none"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
                   />
                 </div>
-
+                <input
+                  type="text"
+                  placeholder="SUBJECT"
+                  required
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
+                />
+                <textarea
+                  rows={6}
+                  placeholder="WRITE MESSAGE"
+                  required
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525] resize-none"
+                />
                 <button
                   type="submit"
-                  className="w-full bg-[#7a1f2b] hover:bg-[#5a1620] text-white py-3 rounded-xl font-bold text-xs shadow transition-colors flex items-center justify-center gap-2"
+                  className="px-8 py-3 bg-[#EC1C23] hover:bg-[#c41218] text-white font-black text-xs uppercase tracking-wider rounded transition-colors shadow-md"
                 >
-                  <Send className="w-4 h-4 text-amber-300" />
-                  <span>Send Message</span>
+                  SEND MESSAGE
                 </button>
               </form>
             )}
           </div>
 
-          {/* Interactive Map & Direct Actions */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="bg-slate-900 text-white p-6 rounded-3xl shadow-sm space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
-                  Campus Location
-                </span>
-                <span className="text-[11px] text-slate-400">
-                  10.9394° N, 76.9373° E
-                </span>
-              </div>
-              <h3 className="text-xl font-bold ">Kovaipudur Campus Map</h3>
+          {/* Right Column: Contact Us Details */}
+          <div className="lg:col-span-5 space-y-6">
+            <div>
+              <h2 className="text-2xl font-black uppercase tracking-wider text-[#252525]">
+                CONTACT US
+              </h2>
+              <p className="text-xs text-slate-400 mt-1">
+                Welcome to our website, Feel free to contact us any time
+              </p>
+            </div>
 
-              {/* Responsive Google Maps Embed Container */}
-              <div className="w-full h-72 rounded-2xl overflow-hidden border border-slate-700 bg-slate-800 relative">
-                <iframe
-                  title="CBM College Location Map"
-                  src="https://maps.google.com/maps?q=10.9394,76.9373&hl=en&z=15&output=embed"
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                  loading="lazy"
-                />
+            <div className="space-y-4">
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-md flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">EMAIL ADDRESS</div>
+                  <div className="text-sm font-bold text-[#252525] mt-0.5">cbmcollegekovai@gmail.com</div>
+                  <div className="text-xs text-slate-500">mba@cbmcollege.com</div>
+                </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs pt-2">
-                <a
-                  href="https://maps.google.com/maps?q=10.9394,76.9373"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-amber-300 hover:underline flex items-center gap-1 font-semibold"
-                >
-                  <span>Open in Google Maps App</span>
-                  <Globe className="w-3.5 h-3.5" />
-                </a>
-                <span className="text-slate-400">Sakethapuri, Coimbatore</span>
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-md flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">PHONE HELPLINE</div>
+                  <div className="text-sm font-bold text-[#252525] mt-0.5">0422-2607259</div>
+                  <div className="text-xs text-[#EC1C23] font-bold">+91 9976573040</div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-md flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">CAMPUS LOCATION</div>
+                  <div className="text-xs font-bold text-[#252525] mt-0.5 leading-relaxed">
+                    CBM College of Arts & Science, Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India – 641042
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* 3. GOOGLE MAPS EMBED SECTION (Matching reference screenshot `Desktop View Contact Page.png`) */}
+      <section className="w-full h-96 bg-slate-200 border-y border-slate-300">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.439063259972!2d76.9351113!3d10.9394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85b0d061f5169%3A0xc3cb77a560df0a42!2sCBM%20College%20of%20Arts%20and%20Science!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen={false}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="CBM College Location Map"
+        />
       </section>
     </div>
   );
