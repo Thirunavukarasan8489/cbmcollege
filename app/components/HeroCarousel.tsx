@@ -69,7 +69,7 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="relative w-full min-h-[500px] sm:min-h-[560px] lg:min-h-[620px] bg-slate-950 text-white overflow-hidden flex items-center"
+      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] bg-slate-950 text-white overflow-hidden flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -80,7 +80,7 @@ export default function HeroCarousel() {
             index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
           }`}
         >
-          {/* Background Image with Dark Overlay Gradient */}
+          {/* Background Image extending behind floating navbar */}
           <div className="relative w-full h-full">
             <Image
               src={slide.image}
@@ -92,9 +92,9 @@ export default function HeroCarousel() {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/40" />
           </div>
 
-          {/* Slide Text Content Overlay */}
-          <div className="absolute inset-0 flex items-center z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-12">
+          {/* Slide Text Content Overlay positioned below navbar overlap */}
+          <div className="absolute inset-0 flex items-center z-20 pt-24 sm:pt-32 lg:pt-36 pb-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
               <div className="max-w-2xl space-y-4">
                 {/* Subtitle Tag */}
                 <p className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-200">
@@ -152,7 +152,7 @@ export default function HeroCarousel() {
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Slide Pagination Dots (Center bottom) */}
+      {/* Slide Pagination Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {slides.map((_, index) => (
           <button

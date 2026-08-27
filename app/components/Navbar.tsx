@@ -19,7 +19,6 @@ import {
   Sparkles,
   Building2,
   ShieldCheck,
-  Share2,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -68,7 +67,7 @@ export default function Navbar() {
       name: "MBA Department",
       href: "/mba-department",
       desc: "AICTE Approved 2-Year Full-Time Program",
-      icon: Sparkles,
+      icon: GraduationCap,
     },
   ];
 
@@ -87,36 +86,69 @@ export default function Navbar() {
     },
   ];
 
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/courses?search=${encodeURIComponent(
+        searchQuery
+      )}`;
+    }
+  };
+
   return (
     <header className="w-full relative z-50">
-      {/* 1. TOP UTILITY BAR (Black/Dark Background #141414 matching reference screenshot) */}
-      <div className="bg-[#141414] text-slate-300 text-xs py-2 px-4 border-b border-zinc-800">
+      {/* 1. TOP UTILITY BAR (Light Grey with Circled Icons matching screenshot) */}
+      <div className="bg-[#f8f9fa] border-b border-slate-200 text-[#252525] text-xs py-2.5 px-4 relative z-50">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
-          {/* Contact Details */}
-          <div className="flex flex-wrap items-center gap-4 text-[11px] sm:text-xs">
-            <span className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-[#EC1C23]" />
-              <span>Sakethapuri, Kovaipudur, Coimbatore – 641042</span>
+          {/* Contact Details with Circled Icons */}
+          <div className="flex flex-wrap items-center gap-6 text-[11px] sm:text-xs">
+            <span className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-slate-200/80 text-[#EC1C23] flex items-center justify-center shrink-0 border border-slate-300">
+                <MapPin className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-slate-600 font-medium">
+                Sakethapuri, Kovaipudur, Coimbatore – 641042
+              </span>
             </span>
-            <span className="hidden md:flex items-center gap-1.5 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5 text-[#EC1C23]" />
-              <a href="mailto:cbmcollegekovai@gmail.com">
+
+            <span className="hidden md:flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-slate-200/80 text-[#EC1C23] flex items-center justify-center shrink-0 border border-slate-300">
+                <Mail className="w-3.5 h-3.5" />
+              </div>
+              <a
+                href="mailto:cbmcollegekovai@gmail.com"
+                className="text-slate-600 font-medium hover:text-[#EC1C23] transition-colors"
+              >
                 cbmcollegekovai@gmail.com
               </a>
             </span>
-            <span className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5 text-[#EC1C23]" />
-              <a href="tel:04222607259">0422-2607259</a> /{" "}
-              <a href="tel:+919976573040" className="text-amber-400 font-semibold">
+
+            <span className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-slate-200/80 text-[#EC1C23] flex items-center justify-center shrink-0 border border-slate-300">
+                <Phone className="w-3.5 h-3.5" />
+              </div>
+              <a
+                href="tel:04222607259"
+                className="text-slate-600 font-medium hover:text-[#EC1C23] transition-colors"
+              >
+                0422-2607259
+              </a>{" "}
+              /{" "}
+              <a
+                href="tel:+919976573040"
+                className="text-[#EC1C23] font-bold hover:underline"
+              >
                 +91 9976573040
               </a>
             </span>
           </div>
 
-          {/* Language Selector & Social Links */}
+          {/* Language & Social Icons */}
           <div className="flex items-center gap-4 shrink-0">
-            <div className="hidden sm:flex items-center gap-1.5 text-[11px] cursor-pointer hover:text-white transition-colors border-r border-zinc-700 pr-3">
-              <Globe className="w-3.5 h-3.5 text-[#EC1C23]" />
+            <div className="hidden sm:flex items-center gap-1 text-[11px] text-slate-600 cursor-pointer hover:text-[#EC1C23] transition-colors border-r border-slate-300 pr-3">
+              <div className="w-7 h-7 rounded-full bg-slate-200/80 text-[#EC1C23] flex items-center justify-center shrink-0 border border-slate-300 mr-1">
+                <Globe className="w-3.5 h-3.5" />
+              </div>
               <span>English</span>
               <ChevronDown className="w-3 h-3" />
             </div>
@@ -124,28 +156,28 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <a
                 href="#"
-                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                className="w-7 h-7 rounded-full bg-slate-200 hover:bg-[#EC1C23] hover:text-white text-slate-600 flex items-center justify-center transition-colors text-xs font-bold"
                 aria-label="Facebook"
               >
                 f
               </a>
               <a
                 href="#"
-                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                className="w-7 h-7 rounded-full bg-slate-200 hover:bg-[#EC1C23] hover:text-white text-slate-600 flex items-center justify-center transition-colors text-xs font-bold"
                 aria-label="Twitter"
               >
-                X
+                t
               </a>
               <a
                 href="#"
-                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
-                aria-label="Youtube"
+                className="w-7 h-7 rounded-full bg-slate-200 hover:bg-[#EC1C23] hover:text-white text-slate-600 flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="Google Plus"
               >
-                G+
+                g+
               </a>
               <a
                 href="#"
-                className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-[#EC1C23] text-white flex items-center justify-center transition-colors text-[10px] font-bold"
+                className="w-7 h-7 rounded-full bg-slate-200 hover:bg-[#EC1C23] hover:text-white text-slate-600 flex items-center justify-center transition-colors text-xs font-bold"
                 aria-label="Pinterest"
               >
                 p
@@ -155,251 +187,250 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. MAIN NAVIGATION HEADER (White Navbar matching reference screenshot) */}
-      <nav className="bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <div className="relative w-56 sm:w-64 h-14 sm:h-16">
+      {/* 2. FLOATING OVERLAPPING NAVBAR STRIP (Clean active badge pills matching reference screenshots) */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-40 -mb-16 sm:-mb-20">
+        <div className="flex items-start w-full relative pt-0">
+          {/* Tall White Square Logo Box */}
+          <Link
+            href="/"
+            className="bg-white p-3 sm:p-4 shadow-2xl border border-slate-200 z-50 shrink-0 flex flex-col items-center justify-center min-w-[130px] sm:min-w-[165px] h-[86px] sm:h-[104px]"
+          >
+            <div className="relative w-28 sm:w-36 h-12 sm:h-14">
               <Image
                 src="/logo.png"
-                alt="CBM College Emblem Logo"
-                width={450}
-                height={110}
+                alt="CBM College Logo"
+                width={350}
+                height={90}
                 className="object-contain w-auto h-full"
                 priority
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            <Link
-              href="/"
-              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                pathname === "/"
-                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                  : "text-[#252525] hover:text-[#EC1C23]"
-              }`}
-            >
-              HOME
-            </Link>
-
-            {/* About Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setAboutDropdown(true)}
-              onMouseLeave={() => setAboutDropdown(false)}
-            >
-              <button
-                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                  ["/about", "/women-empowerment"].includes(pathname)
-                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23]"
+          {/* Red Floating Nav Strip */}
+          <nav className="flex-1 bg-[#EC1C23] text-white h-14 sm:h-16 flex items-center justify-between px-4 sm:px-6 shadow-xl">
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center gap-1.5 xl:gap-3">
+              <Link
+                href="/"
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                  pathname === "/"
+                    ? "bg-white text-[#EC1C23] shadow-md"
+                    : "text-white hover:bg-white/15"
                 }`}
               >
-                <span>ABOUT</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
+                HOME
+              </Link>
 
-              {aboutDropdown && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  {aboutSubmenu.map((sub) => {
-                    const Icon = sub.icon;
-                    return (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-50 text-[#252525]"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-md bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0 mt-0.5">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold">{sub.name}</div>
-                          <div className="text-[11px] opacity-75 font-normal">
-                            {sub.desc}
+              {/* About Dropdown */}
+              <div
+                className="relative py-2"
+                onMouseEnter={() => setAboutDropdown(true)}
+                onMouseLeave={() => setAboutDropdown(false)}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                    ["/about", "/women-empowerment"].includes(pathname)
+                      ? "bg-white text-[#EC1C23] shadow-md"
+                      : "text-white hover:bg-white/15"
+                  }`}
+                >
+                  <span>ABOUT</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+
+                {aboutDropdown && (
+                  <div className="absolute top-full left-0 w-80 bg-white text-[#252525] rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {aboutSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-rose-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-md bg-rose-100 text-[#EC1C23] flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
                           </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-normal">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
 
-            {/* Courses Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setCoursesDropdown(true)}
-              onMouseLeave={() => setCoursesDropdown(false)}
-            >
-              <button
-                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                  pathname === "/courses" || pathname === "/mba-department"
-                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23]"
+              {/* Courses Dropdown */}
+              <div
+                className="relative py-2"
+                onMouseEnter={() => setCoursesDropdown(true)}
+                onMouseLeave={() => setCoursesDropdown(false)}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                    pathname === "/courses" || pathname === "/mba-department"
+                      ? "bg-white text-[#EC1C23] shadow-md"
+                      : "text-white hover:bg-white/15"
+                  }`}
+                >
+                  <span>COURSES</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+
+                {coursesDropdown && (
+                  <div className="absolute top-full left-0 w-80 bg-white text-[#252525] rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {coursesSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-rose-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-md bg-indigo-100 text-[#2C2B5E] flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-normal">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Campus Life Dropdown */}
+              <div
+                className="relative py-2"
+                onMouseEnter={() => setCampusDropdown(true)}
+                onMouseLeave={() => setCampusDropdown(false)}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                    ["/facilities", "/gallery"].includes(pathname)
+                      ? "bg-white text-[#EC1C23] shadow-md"
+                      : "text-white hover:bg-white/15"
+                  }`}
+                >
+                  <span>CAMPUS LIFE</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+
+                {campusDropdown && (
+                  <div className="absolute top-full left-0 w-80 bg-white text-[#252525] rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {campusSubmenu.map((sub) => {
+                      const Icon = sub.icon;
+                      return (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
+                            pathname === sub.href
+                              ? "bg-[#2C2B5E] text-white"
+                              : "hover:bg-rose-50 text-[#252525]"
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold">{sub.name}</div>
+                            <div className="text-[11px] opacity-75 font-normal">
+                              {sub.desc}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/admission"
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                  pathname === "/admission"
+                    ? "bg-white text-[#EC1C23] shadow-md"
+                    : "text-white hover:bg-white/15"
                 }`}
               >
-                <span>COURSES</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
+                ADMISSION
+              </Link>
 
-              {coursesDropdown && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  {coursesSubmenu.map((sub) => {
-                    const Icon = sub.icon;
-                    return (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-50 text-[#252525]"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-md bg-indigo-100 text-[#2C2B5E] flex items-center justify-center shrink-0 mt-0.5">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold">{sub.name}</div>
-                          <div className="text-[11px] opacity-75 font-normal">
-                            {sub.desc}
-                          </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* Campus Life Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setCampusDropdown(true)}
-              onMouseLeave={() => setCampusDropdown(false)}
-            >
-              <button
-                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                  ["/facilities", "/gallery"].includes(pathname)
-                    ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                    : "text-[#252525] hover:text-[#EC1C23]"
+              <Link
+                href="/staff"
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                  pathname === "/staff"
+                    ? "bg-white text-[#EC1C23] shadow-md"
+                    : "text-white hover:bg-white/15"
                 }`}
               >
-                <span>CAMPUS LIFE</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
+                STAFF
+              </Link>
 
-              {campusDropdown && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-3 space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  {campusSubmenu.map((sub) => {
-                    const Icon = sub.icon;
-                    return (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className={`flex items-start gap-3 p-2.5 rounded-lg transition-all ${
-                          pathname === sub.href
-                            ? "bg-[#2C2B5E] text-white"
-                            : "hover:bg-slate-50 text-[#252525]"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold">{sub.name}</div>
-                          <div className="text-[11px] opacity-75 font-normal">
-                            {sub.desc}
-                          </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
+              <Link
+                href="/contact"
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
+                  pathname === "/contact"
+                    ? "bg-white text-[#EC1C23] shadow-md"
+                    : "text-white hover:bg-white/15"
+                }`}
+              >
+                CONTACT
+              </Link>
             </div>
 
-            <Link
-              href="/admission"
-              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                pathname === "/admission"
-                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                  : "text-[#252525] hover:text-[#EC1C23]"
-              }`}
-            >
-              ADMISSION
-            </Link>
-
-            <Link
-              href="/staff"
-              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                pathname === "/staff"
-                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                  : "text-[#252525] hover:text-[#EC1C23]"
-              }`}
-            >
-              STAFF
-            </Link>
-
-            <Link
-              href="/contact"
-              className={`px-3.5 py-2 text-xs font-black uppercase tracking-wider transition-colors ${
-                pathname === "/contact"
-                  ? "bg-[#EC1C23] text-white rounded-md shadow-sm"
-                  : "text-[#252525] hover:text-[#EC1C23]"
-              }`}
-            >
-              CONTACT
-            </Link>
-          </div>
-
-          {/* Integrated Search Box (Matching reference screenshot `Desktop Home Page.png`) */}
-          <div className="hidden md:flex items-center">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (searchQuery.trim()) {
-                  window.location.href = `/courses?search=${encodeURIComponent(
-                    searchQuery
-                  )}`;
-                }
-              }}
-              className="flex items-center overflow-hidden rounded-md border border-slate-300"
-            >
-              <input
-                type="text"
-                placeholder="Search courses..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="px-3 py-2 text-xs w-44 lg:w-52 text-[#252525] focus:outline-none bg-slate-50"
-              />
-              <button
-                type="submit"
-                className="bg-[#EC1C23] hover:bg-[#c41218] text-white p-2.5 transition-colors"
-                aria-label="Search"
+            {/* White Outline Search Box */}
+            <div className="hidden md:flex items-center ml-auto">
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex items-center border border-white/80 rounded px-3 py-1.5 bg-transparent"
               >
-                <Search className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent text-white placeholder-white/80 text-xs w-28 lg:w-36 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="text-[#EC1C23] bg-white p-1 rounded hover:bg-amber-200 transition-colors ml-1"
+                  aria-label="Search"
+                >
+                  <Search className="w-3.5 h-3.5" />
+                </button>
+              </form>
+            </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md bg-slate-100 hover:bg-slate-200 text-[#252525] transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6 text-[#EC1C23]" /> : <Menu className="w-6 h-6" />}
-          </button>
+            {/* Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-1.5 rounded bg-white/20 hover:bg-white/30 text-white transition-colors border border-white/40 ml-auto"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </nav>
         </div>
-      </nav>
+      </div>
 
       {/* 3. MOBILE FULLSCREEN DRAWER OVERLAY */}
       <div
@@ -416,25 +447,27 @@ export default function Navbar() {
         }`}
       >
         {/* Drawer Header */}
-        <div className="p-4 bg-[#141414] text-white flex items-center justify-between border-b border-zinc-800 shrink-0">
-          <div className="relative w-44 h-10">
-            <Image
-              src="/logo.png"
-              alt="CBM College Emblem Logo"
-              width={300}
-              height={75}
-              className="object-contain w-auto h-full brightness-0 invert"
-            />
+        <div className="p-4 bg-[#EC1C23] text-white flex items-center justify-between border-b border-white/20 shrink-0">
+          <div className="bg-white px-3 py-1.5 rounded shadow">
+            <div className="relative w-36 h-8">
+              <Image
+                src="/logo.png"
+                alt="CBM College Logo"
+                width={300}
+                height={75}
+                className="object-contain w-auto h-full"
+              />
+            </div>
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="p-1.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
+            className="p-1.5 rounded bg-white/20 text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Mobile Search Input Box */}
+        {/* Mobile Search Box */}
         <div className="p-4 border-b border-slate-100 bg-slate-50 shrink-0">
           <form
             onSubmit={(e) => {
@@ -446,7 +479,7 @@ export default function Navbar() {
                 )}`;
               }
             }}
-            className="flex items-center rounded-md border border-slate-300 overflow-hidden bg-white"
+            className="flex items-center rounded border border-slate-300 overflow-hidden bg-white"
           >
             <input
               type="text"
@@ -457,7 +490,7 @@ export default function Navbar() {
             />
             <button
               type="submit"
-              className="bg-[#EC1C23] text-white p-2.5"
+              className="bg-[#EC1C23] text-white p-2"
             >
               <Search className="w-4 h-4" />
             </button>
@@ -469,8 +502,10 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
-              pathname === "/" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded text-xs font-black uppercase tracking-wider ${
+              pathname === "/"
+                ? "bg-[#EC1C23] text-white"
+                : "text-[#252525] hover:bg-slate-100"
             }`}
           >
             HOME
@@ -486,7 +521,7 @@ export default function Navbar() {
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-xs font-bold ${
+                className={`block px-3 py-2 rounded text-xs font-bold ${
                   pathname === sub.href
                     ? "bg-[#2C2B5E] text-white"
                     : "text-[#252525] hover:bg-white"
@@ -507,7 +542,7 @@ export default function Navbar() {
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-xs font-bold ${
+                className={`block px-3 py-2 rounded text-xs font-bold ${
                   pathname === sub.href
                     ? "bg-[#2C2B5E] text-white"
                     : "text-[#252525] hover:bg-white"
@@ -528,7 +563,7 @@ export default function Navbar() {
                 key={sub.href}
                 href={sub.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-xs font-bold ${
+                className={`block px-3 py-2 rounded text-xs font-bold ${
                   pathname === sub.href
                     ? "bg-[#2C2B5E] text-white"
                     : "text-[#252525] hover:bg-white"
@@ -542,8 +577,10 @@ export default function Navbar() {
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
-              pathname === "/admission" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded text-xs font-black uppercase tracking-wider ${
+              pathname === "/admission"
+                ? "bg-[#EC1C23] text-white"
+                : "text-[#252525] hover:bg-slate-100"
             }`}
           >
             ADMISSION
@@ -552,8 +589,10 @@ export default function Navbar() {
           <Link
             href="/staff"
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
-              pathname === "/staff" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded text-xs font-black uppercase tracking-wider ${
+              pathname === "/staff"
+                ? "bg-[#EC1C23] text-white"
+                : "text-[#252525] hover:bg-slate-100"
             }`}
           >
             STAFF
@@ -562,8 +601,10 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className={`block px-3 py-2.5 rounded-md text-xs font-black uppercase tracking-wider ${
-              pathname === "/contact" ? "bg-[#EC1C23] text-white" : "text-[#252525] hover:bg-slate-100"
+            className={`block px-3 py-2.5 rounded text-xs font-black uppercase tracking-wider ${
+              pathname === "/contact"
+                ? "bg-[#EC1C23] text-white"
+                : "text-[#252525] hover:bg-slate-100"
             }`}
           >
             CONTACT
@@ -575,7 +616,7 @@ export default function Navbar() {
           <Link
             href="/admission"
             onClick={() => setIsOpen(false)}
-            className="block w-full py-3 bg-[#EC1C23] text-white text-center rounded-md font-bold text-xs uppercase tracking-wider shadow"
+            className="block w-full py-3 bg-[#EC1C23] text-white text-center rounded font-bold text-xs uppercase tracking-wider shadow"
           >
             APPLY ONLINE 2026
           </Link>
