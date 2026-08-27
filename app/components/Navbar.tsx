@@ -19,6 +19,7 @@ import {
   Sparkles,
   Building2,
   ShieldCheck,
+  Calendar,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -58,7 +59,7 @@ export default function Navbar() {
       name: "College Events & Seminars",
       href: "/events",
       desc: "Upcoming Conferences, Sports & Cultural Fests",
-      icon: Sparkles,
+      icon: Calendar,
     },
   ];
 
@@ -236,7 +237,9 @@ export default function Navbar() {
               >
                 <button
                   className={`flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
-                    ["/about", "/women-empowerment", "/events"].includes(pathname)
+                    ["/about", "/women-empowerment", "/events"].includes(
+                      pathname,
+                    )
                       ? "bg-white text-[#EC1C23] shadow-md"
                       : "text-white hover:bg-white/15"
                   }`}
