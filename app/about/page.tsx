@@ -2,7 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { GraduationCap, Award, BookOpen, Tag, Users, CheckCircle2, Star } from "lucide-react";
+import {
+  GraduationCap,
+  Award,
+  BookOpen,
+  Tag,
+  Users,
+  CheckCircle2,
+  Star,
+} from "lucide-react";
 
 export default function AboutPage() {
   const teachers = [
@@ -29,7 +37,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-16 pb-12 text-[#252525]">
       {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View About Page.png`) */}
-      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+      {/* <div className="relative w-full h-72 bg-slate-950 text-white flex items-end pb-14 overflow-hidden">
         <Image
           src="/hero_1.jpg"
           alt="About Us Banner"
@@ -49,7 +57,32 @@ export default function AboutPage() {
             <span className="text-[#EC1C23]">About</span>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <section className="relative text-white py-14 px-4 sm:px-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{ backgroundImage: "url('/hero_1.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
+
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3 pt-20">
+          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+            <span>/</span>
+            <span>About</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+            About Us
+          </h1>
+          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
+            Dedicated to value-based higher education since July 1, 1974 under
+            the vision of CBM Sakunthala Memorial Trust.
+          </p>
+        </div>
+      </section>
 
       {/* 2. ABOUT WELCOME & FOUNDER HISTORY SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
@@ -62,10 +95,19 @@ export default function AboutPage() {
               SERVING HIGHER EDUCATION SINCE 1974 IN COIMBATORE
             </p>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              With the noble endeavour of promoting education, <strong>Dharmapravarthana, Late C. B. Muthuswamy Chettiar</strong> founded the <strong>"CBM Sakunthala Memorial Trust"</strong> in October 1970. The CBM College was sponsored by the Trust with the aim of serving the needs of higher education in the growing city of Coimbatore.
+              With the noble endeavour of promoting education,{" "}
+              <strong>Dharmapravarthana, Late C. B. Muthuswamy Chettiar</strong>{" "}
+              founded the <strong>"CBM Sakunthala Memorial Trust"</strong> in
+              October 1970. The CBM College was sponsored by the Trust with the
+              aim of serving the needs of higher education in the growing city
+              of Coimbatore.
             </p>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              The College was inaugurated on the First of July 1974 in the immediate presence of the Chief Donor and founder of the Trust, Late C. B. Muthuswamy Chettiar. Situated in the serene environment of Sakethapuri, Kovaipudur, the cool breeze and salubrious climate kindle the spirit of learning and imagination.
+              The College was inaugurated on the First of July 1974 in the
+              immediate presence of the Chief Donor and founder of the Trust,
+              Late C. B. Muthuswamy Chettiar. Situated in the serene environment
+              of Sakethapuri, Kovaipudur, the cool breeze and salubrious climate
+              kindle the spirit of learning and imagination.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2 text-xs font-bold text-slate-700">
@@ -133,11 +175,15 @@ export default function AboutPage() {
                 key={i}
                 className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"
               >
-                <div className="text-2xl font-black text-[#EC1C23]">{obj.num}</div>
+                <div className="text-2xl font-black text-[#EC1C23]">
+                  {obj.num}
+                </div>
                 <h3 className="text-sm font-black text-[#252525] uppercase tracking-wide">
                   {obj.title}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{obj.desc}</p>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {obj.desc}
+                </p>
               </div>
             ))}
           </div>

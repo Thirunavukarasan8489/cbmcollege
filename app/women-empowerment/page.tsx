@@ -22,7 +22,7 @@ export default function WomenEmpowermentPage() {
   return (
     <div className="space-y-12 pb-16">
       {/* BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
+      <section className="relative text-white py-14 px-4 sm:px-16 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: "url('/hero_2.jpg')" }}

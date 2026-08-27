@@ -90,7 +90,7 @@ export default function Navbar() {
     e.preventDefault();
     if (searchQuery.trim()) {
       window.location.href = `/courses?search=${encodeURIComponent(
-        searchQuery
+        searchQuery,
       )}`;
     }
   };
@@ -188,14 +188,14 @@ export default function Navbar() {
       </div>
 
       {/* 2. FLOATING OVERLAPPING NAVBAR STRIP (Clean active badge pills matching reference screenshots) */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-40 -mb-16 sm:-mb-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-40 -mb-32 sm:-mb-28">
         <div className="flex items-start w-full relative pt-0">
           {/* Tall White Square Logo Box */}
           <Link
             href="/"
-            className="bg-white p-3 sm:p-4 shadow-2xl border border-slate-200 z-50 shrink-0 flex flex-col items-center justify-center min-w-[130px] sm:min-w-[165px] h-[86px] sm:h-[104px]"
+            className="bg-white sm:p-4 shadow-2xl border border-slate-200 z-50 shrink-0 flex flex-col items-center justify-center min-w-[130px] sm:min-w-[165px] h-[86px]"
           >
-            <div className="relative w-28 sm:w-36 h-12 sm:h-14">
+            <div className="relative w-28 sm:w-52 h-12 sm:h-14">
               <Image
                 src="/logo.png"
                 alt="CBM College Logo"
@@ -408,7 +408,7 @@ export default function Navbar() {
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-transparent text-white placeholder-white/80 text-xs w-28 lg:w-36 focus:outline-none"
+                  className="bg-transparent text-white placeholder-white/80 text-xs w-20 lg:w-24 focus:outline-none"
                 />
                 <button
                   type="submit"
@@ -426,7 +426,11 @@ export default function Navbar() {
               className="lg:hidden p-1.5 rounded bg-white/20 hover:bg-white/30 text-white transition-colors border border-white/40 ml-auto"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </nav>
         </div>
@@ -435,7 +439,9 @@ export default function Navbar() {
       {/* 3. MOBILE FULLSCREEN DRAWER OVERLAY */}
       <div
         className={`fixed inset-0 z-[999] bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       />
@@ -475,7 +481,7 @@ export default function Navbar() {
               if (searchQuery.trim()) {
                 setIsOpen(false);
                 window.location.href = `/courses?search=${encodeURIComponent(
-                  searchQuery
+                  searchQuery,
                 )}`;
               }
             }}
@@ -488,10 +494,7 @@ export default function Navbar() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-3 py-2 text-xs text-[#252525] focus:outline-none"
             />
-            <button
-              type="submit"
-              className="bg-[#EC1C23] text-white p-2"
-            >
+            <button type="submit" className="bg-[#EC1C23] text-white p-2">
               <Search className="w-4 h-4" />
             </button>
           </form>

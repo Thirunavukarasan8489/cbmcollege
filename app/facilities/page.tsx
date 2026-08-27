@@ -2,7 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Monitor, Building2, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  BookOpen,
+  Monitor,
+  Building2,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Award,
+} from "lucide-react";
 
 export default function FacilitiesPage() {
   const facilities = [
@@ -59,7 +67,7 @@ export default function FacilitiesPage() {
   return (
     <div className="space-y-16 pb-12 text-[#252525]">
       {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Our Faculities.png`) */}
-      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+      {/* <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
         <Image
           src="/hero_3.jpg"
           alt="Campus Facilities Banner"
@@ -79,7 +87,32 @@ export default function FacilitiesPage() {
             <span className="text-[#EC1C23]">Facilities</span>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <section className="relative text-white py-14 px-4 sm:px-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{ backgroundImage: "url('/hero_3.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
+
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3 pt-20">
+          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+            <span>/</span>
+            <span>Facilities</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            Facilities & Campus Infrastructure
+          </h1>
+          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
+            Academic resources, research central library, high-speed labs, and
+            Western Ghats residential hostel.
+          </p>
+        </div>
+      </section>
 
       {/* 2. FACILITIES LIST (Matching reference screenshot `Desktop View Our Faculities.png`) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
@@ -88,7 +121,8 @@ export default function FacilitiesPage() {
             CAMPUS INFRASTRUCTURE & FACILITIES
           </h2>
           <p className="text-xs text-slate-500">
-            Providing an environment highly conducive for creative & academic endeavours
+            Providing an environment highly conducive for creative & academic
+            endeavours
           </p>
         </div>
 
