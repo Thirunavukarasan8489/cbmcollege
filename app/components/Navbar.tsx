@@ -54,6 +54,12 @@ export default function Navbar() {
       desc: "Gender Sensitization & Leadership Workshops",
       icon: Award,
     },
+    {
+      name: "College Events & Seminars",
+      href: "/events",
+      desc: "Upcoming Conferences, Sports & Cultural Fests",
+      icon: Sparkles,
+    },
   ];
 
   const coursesSubmenu = [
@@ -79,9 +85,9 @@ export default function Navbar() {
       icon: Building2,
     },
     {
-      name: "Photo & Video Gallery",
+      name: "Photo Gallery",
       href: "/gallery",
-      desc: "Campus Events & Silver Jubilee Highlights",
+      desc: "Campus Infrastructure & Silver Jubilee Photos",
       icon: ShieldCheck,
     },
   ];
@@ -230,7 +236,7 @@ export default function Navbar() {
               >
                 <button
                   className={`flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all rounded ${
-                    ["/about", "/women-empowerment"].includes(pathname)
+                    ["/about", "/women-empowerment", "/events"].includes(pathname)
                       ? "bg-white text-[#EC1C23] shadow-md"
                       : "text-white hover:bg-white/15"
                   }`}

@@ -24,7 +24,7 @@ export default function ContactPage() {
   return (
     <div className="space-y-16 pb-12 text-[#252525]">
       {/* 1. PAGE HEADER BANNER (Matching reference screenshot `Desktop View Contact Page.png`) */}
-      <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
+      {/* <div className="relative w-full h-64 bg-slate-950 text-white flex items-center overflow-hidden">
         <Image
           src="/hero_2.jpg"
           alt="Contact Us Banner"
@@ -44,7 +44,30 @@ export default function ContactPage() {
             <span className="text-[#EC1C23]">Contact us</span>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <section className="relative text-white py-14 px-4 sm:px-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{ backgroundImage: "url('/hero_2.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3 pt-20">
+          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+            <span>/</span>
+            <span>Contact us</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+            Contact us
+          </h1>
+          <p className="text-slate-200 max-w-2xl text-sm sm:text-base">
+            Welcome to our website, Feel free to contact us any time
+          </p>
+        </div>
+      </section>
 
       {/* 2. FORM & CONTACT DETAILS SPLIT SECTION (Matching reference screenshot `Desktop View Contact Page.png`) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -62,7 +85,8 @@ export default function ContactPage() {
 
             {submitted ? (
               <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-md text-xs font-bold">
-                Thank you! Your message has been sent successfully to CBM College administration.
+                Thank you! Your message has been sent successfully to CBM
+                College administration.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -72,7 +96,9 @@ export default function ContactPage() {
                     placeholder="USERNAME"
                     required
                     value={form.username}
-                    onChange={(e) => setForm({ ...form, username: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, username: e.target.value })
+                    }
                     className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
                   />
                   <input
@@ -80,7 +106,9 @@ export default function ContactPage() {
                     placeholder="EMAIL"
                     required
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                     className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
                   />
                 </div>
@@ -89,7 +117,9 @@ export default function ContactPage() {
                   placeholder="SUBJECT"
                   required
                   value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, subject: e.target.value })
+                  }
                   className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525]"
                 />
                 <textarea
@@ -97,7 +127,9 @@ export default function ContactPage() {
                   placeholder="WRITE MESSAGE"
                   required
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
                   className="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-300 rounded focus:outline-none text-[#252525] resize-none"
                 />
                 <button
@@ -127,9 +159,15 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-400 uppercase">EMAIL ADDRESS</div>
-                  <div className="text-sm font-bold text-[#252525] mt-0.5">cbmcollegekovai@gmail.com</div>
-                  <div className="text-xs text-slate-500">mba@cbmcollege.com</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">
+                    EMAIL ADDRESS
+                  </div>
+                  <div className="text-sm font-bold text-[#252525] mt-0.5">
+                    cbmcollegekovai@gmail.com
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    mba@cbmcollege.com
+                  </div>
                 </div>
               </div>
 
@@ -138,9 +176,15 @@ export default function ContactPage() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-400 uppercase">PHONE HELPLINE</div>
-                  <div className="text-sm font-bold text-[#252525] mt-0.5">0422-2607259</div>
-                  <div className="text-xs text-[#EC1C23] font-bold">+91 9976573040</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">
+                    PHONE HELPLINE
+                  </div>
+                  <div className="text-sm font-bold text-[#252525] mt-0.5">
+                    0422-2607259
+                  </div>
+                  <div className="text-xs text-[#EC1C23] font-bold">
+                    +91 9976573040
+                  </div>
                 </div>
               </div>
 
@@ -149,9 +193,12 @@ export default function ContactPage() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-400 uppercase">CAMPUS LOCATION</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase">
+                    CAMPUS LOCATION
+                  </div>
                   <div className="text-xs font-bold text-[#252525] mt-0.5 leading-relaxed">
-                    CBM College of Arts & Science, Sakethapuri, Kovaipudur, Coimbatore, Tamil Nadu, India – 641042
+                    CBM College of Arts & Science, Sakethapuri, Kovaipudur,
+                    Coimbatore, Tamil Nadu, India – 641042
                   </div>
                 </div>
               </div>

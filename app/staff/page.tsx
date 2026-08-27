@@ -28,9 +28,9 @@ export default function StaffPage() {
   });
 
   return (
-    <div className="space-y-16 py-12">
+    <div className="space-y-16 pb-12">
       {/* BANNER WITH BACKGROUND CAMPUS IMAGE */}
-      <section className="relative text-white py-14 px-4 sm:px-6 overflow-hidden">
+      <section className="relative text-white py-14 px-4 sm:px-16 overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
@@ -40,7 +40,7 @@ export default function StaffPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-[#2C2B5E]/90 to-[#EC1C23]/80" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto space-y-3">
+        <div className="relative z-10 max-w-7xl mx-auto space-y-3 pt-20">
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-300">
             <Link href="/" className="hover:underline">Home</Link>
             <span>/</span>
